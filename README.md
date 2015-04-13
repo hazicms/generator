@@ -35,7 +35,7 @@ Steps to Get Started
 
         php artisan vendor:publish --provider="Mitul\Generator\GeneratorServiceProvider"
 
-5. Fire artisan command to generate API, Scaffold with CRUD views or both API as well as CRUD views.
+5. Fire artisan command to generate module with model.
 
         php artisan mitul.generator:module_model ModuleName ModelName
         
