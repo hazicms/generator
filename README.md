@@ -1,4 +1,3 @@
-# laravelapigeneratorextend
 Laravel API Generator Extend
 
 Steps to Get Started
@@ -38,34 +37,13 @@ Steps to Get Started
 
 5. Fire artisan command to generate API, Scaffold with CRUD views or both API as well as CRUD views.
 
-        php artisan mitul.generator:api ModelName
-        php artisan mitul.generator:scaffold ModelName
-        php artisan mitul.generator:scaffold_api ModelName
-        php artisan mitul.generator:scaffold_api ModelName
         php artisan mitul.generator:module_model ModuleName ModelName
         
     e.g.
     
-        php artisan mitul.generator:api Project
-        php artisan mitul.generator:api Post
- 
-        php artisan mitul.generator:scaffold Project
-        php artisan mitul.generator:scaffold Post
- 
-        php artisan mitul.generator:scaffold_api Project
-        php artisan mitul.generator:scaffold_api Post
-
         php artisan mitul.generator:module_model Network Project
         php artisan mitul.generator:module_model Blog Post
  
-6. If you want to use SoftDelete trait with your models then you can specify softDelete option.
- 
-        php artisan mitul.generator:api ModelName --softDelete
-        
-    e.g.
-    
-        php artisan mitul.generator:api Post --softDelete
-        
-7. Enter the fields with options<br>
+6. Enter the fields with options<br>
 
-8. And you are ready to go. :)
+7. And you are ready to go. :)
