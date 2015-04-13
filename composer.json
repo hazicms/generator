@@ -1,0 +1,26 @@
+{
+    "name": "aitiba/laravelapigeneratorextend",
+    "type": "library",
+    "description": "Laravel Api Generator Extend",
+    "keywords": ["generator","api"],
+    "homepage": "https://github.com/aitiba/laravelapigeneratorextend",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aitor Ibañez",
+            "email": "aitiba@gmail.com",
+            "homepage": "http://aitoribanez.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+	"pingpong/modules": "2.0.*@dev",
+	"mitulgolakiya/laravel-api-generator": "1.2.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Aitiba": "src"
+        }
+    }
+}
