@@ -3,6 +3,7 @@
 use Config;
 use Mitul\Generator\CommandData;
 use Mitul\Generator\Generators\GeneratorProvider;
+use Aitiba\LaravelApiGeneratorExtend\Generator\Templates\TemplatesHelper;
 
 class ModuleRoutesGenerator implements GeneratorProvider
 {
@@ -54,6 +55,7 @@ class ModuleRoutesGenerator implements GeneratorProvider
     {
         $templateData = str_replace('$MODEL_NAME$', $this->commandData->modelName, $templateData);
         $templateData = str_replace('$MODEL_NAME_PLURAL_CAMEL$', $this->commandData->modelNamePluralCamel, $templateData);
+        $templateData = str_replace('$NAMESPACE_BASE$', $this->commandData->base, $templateData);
 
         return $templateData;
     }
@@ -70,11 +72,13 @@ class ModuleRoutesGenerator implements GeneratorProvider
         $namespace = Config::get('generator.namespace_base', base_path('resources/views'));
         $module = $this->commandData->moduleName;
         $controller = Config::get('generator.namespace_controller_module', base_path('resources/views'));
-        $base = $namespace.'\\'.$module.'\\'.$controller.'\\';
+        $this->commandData->base = $namespace.'\\'.$module.'\\'.$controller.'\\'.$this->commandData->modelName."Controller";
 
-        $routes = "\n\nRoute::resource('" . $this->commandData->modelNamePluralCamel . "', '".$base.$this->commandData->modelName . "Controller');";
+        $routes = "\n\nRoute::resource('" . $this->commandData->modelNamePluralCamel . "', '".$this->commandData->base."');";
 
-        $deleteRoutes = $this->commandData->templatesHelper->getTemplate("routes", "Scaffold");
+        // $deleteRoutes = $this->commandData->templatesHelper->getTemplate("routes", "Scaffold");
+        $moduleTemplate = new TemplatesHelper();
+        $deleteRoutes = $moduleTemplate->getTemplate("routes", "Module");
 
         $deleteRoutes = $this->fillTemplate($deleteRoutes);
 
