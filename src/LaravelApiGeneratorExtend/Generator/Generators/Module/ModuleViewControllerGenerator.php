@@ -3,6 +3,7 @@
 use Config;
 use Mitul\Generator\CommandData;
 use Mitul\Generator\Generators\GeneratorProvider;
+use Aitiba\LaravelApiGeneratorExtend\Generator\Templates\TemplatesHelper;
 
 class ModuleViewControllerGenerator implements GeneratorProvider
 {
@@ -31,7 +32,10 @@ class ModuleViewControllerGenerator implements GeneratorProvider
 
     public function generate()
     {
-        $templateData = $this->commandData->templatesHelper->getTemplate("Controller", "Scaffold");
+        // $templateData = $this->commandData->templatesHelper->getTemplate("Controller", "Scaffold");
+        $moduleTemplate = new TemplatesHelper();
+
+        $templateData = $moduleTemplate->getTemplate("ControllerRepo", "Module");
 
         $templateData = $this->fillTemplate($templateData);
 

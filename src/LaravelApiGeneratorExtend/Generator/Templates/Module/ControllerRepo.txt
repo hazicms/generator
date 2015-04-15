@@ -37,7 +37,7 @@ class $MODEL_NAME$Controller extends AppBaseController
 	 */
 	public function create()
 	{
-		return view('$MODEL_NAME_PLURAL_CAMEL$.create');
+		return view('$MODULE_NAME$::$MODEL_NAME$.create');
 	}
 
 	/**
@@ -75,7 +75,7 @@ class $MODEL_NAME$Controller extends AppBaseController
 			return redirect(route('$MODEL_NAME_PLURAL_CAMEL$.index'));
 		}
 
-		return view('$MODEL_NAME_PLURAL_CAMEL$.show')->with('$MODEL_NAME_CAMEL$', $$MODEL_NAME_CAMEL$);
+		return view('$MODULE_NAME$::$MODEL_NAME$.show')->with('$MODEL_NAME_CAMEL$', $$MODEL_NAME_CAMEL$);
 	}
 
 	/**
@@ -94,7 +94,7 @@ class $MODEL_NAME$Controller extends AppBaseController
 			return redirect(route('$MODEL_NAME_PLURAL_CAMEL$.index'));
 		}
 
-		return view('$MODEL_NAME_PLURAL_CAMEL$.edit')->with('$MODEL_NAME_CAMEL$', $$MODEL_NAME_CAMEL$);
+		return view('$MODULE_NAME$::$MODEL_NAME$.edit')->with('$MODEL_NAME_CAMEL$', $$MODEL_NAME_CAMEL$);
 	}
 
 	/**

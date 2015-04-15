@@ -4,6 +4,7 @@ use Config;
 use Illuminate\Support\Str;
 use Mitul\Generator\CommandData;
 use Mitul\Generator\Generators\GeneratorProvider;
+use Aitiba\LaravelApiGeneratorExtend\Generator\Templates\TemplatesHelper;
 
 class ModuleViewGenerator implements GeneratorProvider
 {
@@ -20,7 +21,7 @@ class ModuleViewGenerator implements GeneratorProvider
         // $this->path = Config::get('generator.path_views', base_path('resources/views')) . '/' . $this->commandData->modelNamePluralCamel . '/';
         $particular =  base_path(Config::get('generator.tmp_modules', 'app/Modules/')).ucfirst($commandData->moduleName).'/';
         $this->path = $particular.Config::get('generator.path_views_module',base_path('resources/views')).'/'.$this->commandData->modelName . '/' ;
-        $this->viewsPath = "Scaffold/Views";
+        $this->viewsPath = "Module/Views";
     }
 
     public function generate()
@@ -38,7 +39,9 @@ class ModuleViewGenerator implements GeneratorProvider
 
     private function generateFields()
     {
-        $fieldTemplate = $this->commandData->templatesHelper->getTemplate("field.blade", $this->viewsPath);
+        // $fieldTemplate = $this->commandData->templatesHelper->getTemplate("field.blade", $this->viewsPath);
+        $moduleTemplate = new TemplatesHelper();
+        $fieldTemplate = $moduleTemplate->getTemplate("field.blade", $this->viewsPath);
 
         $fieldsStr = "";
 
@@ -49,7 +52,8 @@ class ModuleViewGenerator implements GeneratorProvider
             $fieldsStr .= $singleFieldStr . "\n\n";
         }
 
-        $templateData = $this->commandData->templatesHelper->getTemplate("fields.blade", $this->viewsPath);
+        // $templateData = $this->commandData->templatesHelper->getTemplate("fields.blade", $this->viewsPath);
+        $templateData = $moduleTemplate->getTemplate("fields.blade", $this->viewsPath);
 
         $templateData = str_replace('$FIELDS$', $fieldsStr, $templateData);
 
@@ -63,7 +67,9 @@ class ModuleViewGenerator implements GeneratorProvider
 
     private function generateIndex()
     {
-        $templateData = $this->commandData->templatesHelper->getTemplate("index.blade", $this->viewsPath);
+        // $templateData = $this->commandData->templatesHelper->getTemplate("index.blade", $this->viewsPath);
+        $moduleTemplate = new TemplatesHelper();
+        $templateData = $moduleTemplate->getTemplate("index.blade", $this->viewsPath);
 
         $templateData = $this->fillTemplate($templateData);
 
@@ -99,7 +105,9 @@ class ModuleViewGenerator implements GeneratorProvider
 
     private function generateShow()
     {
-        $fieldTemplate = $this->commandData->templatesHelper->getTemplate("show.blade", $this->viewsPath);
+        // $fieldTemplate = $this->commandData->templatesHelper->getTemplate("show.blade", $this->viewsPath);
+        $moduleTemplate = new TemplatesHelper();
+        $fieldTemplate = $moduleTemplate->getTemplate("show.blade", $this->viewsPath);
 
         $fileName = "show.blade.php";
 
@@ -111,7 +119,9 @@ class ModuleViewGenerator implements GeneratorProvider
 
     private function generateCreate()
     {
-        $templateData = $this->commandData->templatesHelper->getTemplate("create.blade", $this->viewsPath);
+        // $templateData = $this->commandData->templatesHelper->getTemplate("create.blade", $this->viewsPath);
+        $moduleTemplate = new TemplatesHelper();
+        $templateData = $moduleTemplate->getTemplate("create.blade", $this->viewsPath);
 
         $templateData = $this->fillTemplate($templateData);
 
@@ -125,7 +135,9 @@ class ModuleViewGenerator implements GeneratorProvider
 
     private function generateEdit()
     {
-        $templateData = $this->commandData->templatesHelper->getTemplate("edit.blade", $this->viewsPath);
+        // $templateData = $this->commandData->templatesHelper->getTemplate("edit.blade", $this->viewsPath);
+        $moduleTemplate = new TemplatesHelper();
+        $templateData = $moduleTemplate->getTemplate("edit.blade", $this->viewsPath);
 
         $templateData = $this->fillTemplate($templateData);
 
@@ -144,6 +156,8 @@ class ModuleViewGenerator implements GeneratorProvider
 
         $templateData = str_replace('$MODEL_NAME_CAMEL$', $this->commandData->modelNameCamel, $templateData);
         $templateData = str_replace('$MODEL_NAME_PLURAL_CAMEL$', $this->commandData->modelNamePluralCamel, $templateData);
+
+        $templateData = str_replace('$MODULE_NAME$', strtolower($this->commandData->moduleName), $templateData);
 
         return $templateData;
     }

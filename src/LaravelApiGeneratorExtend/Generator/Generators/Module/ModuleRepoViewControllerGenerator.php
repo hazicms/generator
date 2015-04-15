@@ -36,7 +36,7 @@ class ModuleRepoViewControllerGenerator implements GeneratorProvider
     public function generate()
     {
         //$templateData = $this->commandData->templatesHelper->getTemplate("ControllerRepo", "Module");
-         $moduleTemplate = new TemplatesHelper();
+        $moduleTemplate = new TemplatesHelper();
 
         $templateData = $moduleTemplate->getTemplate("ControllerRepo", "Module");
 

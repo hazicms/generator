@@ -1,0 +1,14 @@
+@extends('app')
+
+@section('content')
+<div class="container">
+
+    @include('common.errors')
+
+    {!! Form::open(['route' => '$MODEL_NAME_PLURAL_CAMEL$.store']) !!}
+
+        @include('$MODULE_NAME$::$MODEL_NAME$.fields')
+
+    {!! Form::close() !!}
+</div>
+@endsection
