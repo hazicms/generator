@@ -1,7 +1,7 @@
 <?php namespace Aitiba\LaravelApiGeneratorExtend\Generator\Commands;
 
 use Illuminate\Console\Command;
-use Mitul\Generator\CommandData;
+use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Utils\CommandData;
 use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Module\ModuleMigrationGenerator;
 use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Module\ModuleModelGenerator;
 use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Module\ModuleRepositoryGenerator;
@@ -44,7 +44,6 @@ class ModuleModelGeneratorCommand extends Command
      */
     public function __construct()
     {
-// dd("p");
         parent::__construct();
         $this->commandData = new CommandData($this, CommandData::$COMMAND_TYPE_SCAFFOLD);
     }
@@ -77,7 +76,6 @@ class ModuleModelGeneratorCommand extends Command
 
     private function getData()
     {
-
         $this->commandData->initVariables();
         $this->commandData->inputFields = $this->commandData->getInputFields();
 
@@ -115,8 +113,8 @@ class ModuleModelGeneratorCommand extends Command
         if($this->confirm("\nDo you want to migrate database? [y|N]", false)) {
             $particular =  Config::get('generator.tmp_modules', 'app/Modules/').ucfirst($this->commandData->moduleName).'/';
             $path = $particular.Config::get('generator.path_migration_module', app_path('Database/Migrations/'));
-
-            $this->call('migrate', ['--path' => $path]);
+            // si no existe la tabla $this->commandData->moduleName
+                $this->call('migrate', ['--path' => $path]);
         }
     }
 

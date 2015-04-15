@@ -3,6 +3,7 @@
 use Config;
 use Mitul\Generator\CommandData;
 use Mitul\Generator\Generators\GeneratorProvider;
+use Aitiba\LaravelApiGeneratorExtend\Generator\Templates\TemplatesHelper;
 
 class ModuleRequestGenerator implements GeneratorProvider
 {
@@ -24,11 +25,17 @@ class ModuleRequestGenerator implements GeneratorProvider
         // $this->namespace = Config::get('generator.namespace_request', 'App\Http\Requests');
         $particular = Config::get('generator.namespace_base', 'App').'\\'.ucfirst($commandData->moduleName).'\\';
         $this->namespace = $particular.Config::get('generator.namespace_request_module', 'App\Http\Requests');
+
+        // $this->commandData->modelNamespace = 'Cms\Modules\Modulo\Entities\Modelo';
+        $this->commandData->modelNamespace = Config::get('generator.namespace_base', 'App') . "\\" . $commandData->moduleName . "\\" .Config::get('generator.namespace_model_module', 'App'). "\\" . $commandData->modelName ;
+
     }
 
     function generate()
     {
-        $templateData = $this->commandData->templatesHelper->getTemplate("Request", "Scaffold");
+        // $templateData = $this->commandData->templatesHelper->getTemplate("Request", "Scaffold");
+        $moduleTemplate = new TemplatesHelper();
+        $templateData = $moduleTemplate->getTemplate("Request", "Module");
 
         $templateData = $this->fillTemplate($templateData);
 
@@ -44,8 +51,9 @@ class ModuleRequestGenerator implements GeneratorProvider
     private function fillTemplate($templateData)
     {
         $templateData = str_replace('$NAMESPACE$', $this->namespace, $templateData);
+      
         $templateData = str_replace('$MODEL_NAMESPACE$', $this->commandData->modelNamespace, $templateData);
-
+      
         $templateData = str_replace('$MODEL_NAME$', $this->commandData->modelName, $templateData);
 
         return $templateData;
