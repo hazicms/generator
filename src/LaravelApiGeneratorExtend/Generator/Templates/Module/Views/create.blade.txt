@@ -11,7 +11,7 @@
 
     {!! Form::open(['route' => '$MODEL_NAME_PLURAL_CAMEL$.store']) !!}
 
-        @include('$MODULE_NAME$::$MODEL_NAME$.fields')
+        @include('$MODULE_NAME$::$MODEL_NAME$.form')
 
     {!! Form::close() !!}
 </div>
