@@ -79,8 +79,8 @@ class ModuleModelGeneratorCommand extends Command
         $this->commandData->initVariables();
         $this->commandData->inputFields = $this->commandData->getInputFields();
 
-        $followRepoPattern = $this->confirm("\nDo you want to generate repository ? (y|N)", false);
-
+        // $followRepoPattern = $this->confirm("\nDo you want to generate repository ? (y|N)", false);
+        $followRepoPattern = false;
         $migrationGenerator = new ModuleMigrationGenerator($this->commandData);
         $migrationGenerator->generate();
 
@@ -90,19 +90,19 @@ class ModuleModelGeneratorCommand extends Command
         $requestGenerator = new ModuleRequestGenerator($this->commandData);
         $requestGenerator->generate();
 
-        if($followRepoPattern)
-        {
+        // if($followRepoPattern)
+        // {
             $repositoryGenerator = new ModuleRepositoryGenerator($this->commandData);
             $repositoryGenerator->generate();
 
             $repoControllerGenerator = new ModuleRepoViewControllerGenerator($this->commandData);
             $repoControllerGenerator->generate();
-        }
-        else
-        {
-            $controllerGenerator = new ModuleViewControllerGenerator($this->commandData);
-            $controllerGenerator->generate();
-        }
+        // }
+        // else
+        // {
+        //     $controllerGenerator = new ModuleViewControllerGenerator($this->commandData);
+        //     $controllerGenerator->generate();
+        // }
 
         $viewsGenerator = new ModuleViewGenerator($this->commandData);
         $viewsGenerator->generate();

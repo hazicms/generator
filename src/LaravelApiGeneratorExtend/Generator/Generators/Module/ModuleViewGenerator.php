@@ -15,12 +15,15 @@ class ModuleViewGenerator implements GeneratorProvider
 
     private $viewsPath;
 
+    private $repoNamespace;
+
     function __construct($commandData)
     {
         $this->commandData = $commandData;
         // $this->path = Config::get('generator.path_views', base_path('resources/views')) . '/' . $this->commandData->modelNamePluralCamel . '/';
         $particular =  base_path(Config::get('generator.tmp_modules', 'app/Modules/')).ucfirst($commandData->moduleName).'/';
         $this->path = $particular.Config::get('generator.path_views_module',base_path('resources/views')).'/'.$this->commandData->modelName . '/' ;
+        $this->repoNamespace = $particular.Config::get('generator.namespace_repository_module', 'App\Libraries\Repositories');
         $this->viewsPath = "Module/Views";
     }
 
@@ -158,6 +161,8 @@ class ModuleViewGenerator implements GeneratorProvider
         $templateData = str_replace('$MODEL_NAME$', $this->commandData->modelName, $templateData);
         $templateData = str_replace('$MODEL_NAME_PLURAL$', $this->commandData->modelNamePlural, $templateData);
 
+        $templateData = str_replace('$REPO_NAMESPACE$', $this->repoNamespace, $templateData);
+        
         $templateData = str_replace('$MODEL_NAME_CAMEL$', $this->commandData->modelNameCamel, $templateData);
         $templateData = str_replace('$MODEL_NAME_PLURAL_CAMEL$', $this->commandData->modelNamePluralCamel, $templateData);
 
