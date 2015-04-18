@@ -49,6 +49,7 @@ class ModuleViewGenerator implements GeneratorProvider
         {
             $singleFieldStr = str_replace('$FIELD_NAME_TITLE$', Str::title($field['fieldName']), $fieldTemplate);
             $singleFieldStr = str_replace('$FIELD_NAME$', $field['fieldName'], $singleFieldStr);
+
             $fieldsStr .= $singleFieldStr . "\n\n";
         }
 
@@ -56,6 +57,9 @@ class ModuleViewGenerator implements GeneratorProvider
         $templateData = $moduleTemplate->getTemplate("fields.blade", $this->viewsPath);
 
         $templateData = str_replace('$FIELDS$', $fieldsStr, $templateData);
+        $templateData = str_replace('$MODEL_NAME_CAMEL$', $this->commandData->modelNameCamel, $templateData);
+        $templateData = str_replace('$MODEL_NAME_PLURAL_CAMEL$', $this->commandData->modelNamePluralCamel, $templateData);
+        $templateData = str_replace('$MODEL_NAME$', $this->commandData->modelName, $templateData);
 
         $fileName = "fields.blade.php";
 

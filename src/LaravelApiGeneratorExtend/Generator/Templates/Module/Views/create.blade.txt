@@ -1,5 +1,9 @@
 @extends('dashboard')
 
+@section('page_title')
+    Create $MODEL_NAME_CAMEL$
+@stop
+
 @section('content')
 <div class="container">
 
