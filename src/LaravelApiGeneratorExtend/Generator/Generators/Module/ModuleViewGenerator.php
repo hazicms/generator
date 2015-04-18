@@ -31,6 +31,10 @@ class ModuleViewGenerator implements GeneratorProvider
     {
         if(!file_exists($this->path))
             mkdir($this->path, 0755, true);
+        if(!file_exists($this->path . 'public/'))
+            mkdir($this->path . 'public/', 0755, true);
+        if(!file_exists($this->path . 'admin/'))
+            mkdir($this->path . 'admin/', 0755, true);
 
         $this->commandData->commandObj->comment("\nViews created: ");
         $this->generateFields();
@@ -104,7 +108,7 @@ class ModuleViewGenerator implements GeneratorProvider
 
         $templateData = str_replace('$FIELD_BODY$', $tableBodyFields, $templateData);
 
-        $path = $this->path . $fileName;
+        $path = $this->path . 'admin/' . $fileName;
 
         $this->commandData->fileHelper->writeFile($path, $templateData);
         $this->commandData->commandObj->info("index.blade.php created");
@@ -118,7 +122,7 @@ class ModuleViewGenerator implements GeneratorProvider
 
         $fileName = "show.blade.php";
 
-        $path = $this->path . $fileName;
+        $path = $this->path . 'public/' . $fileName;
 
         $this->commandData->fileHelper->writeFile($path, $fieldTemplate);
         $this->commandData->commandObj->info("show.blade.php created");
@@ -134,7 +138,7 @@ class ModuleViewGenerator implements GeneratorProvider
 
         $fileName = "create.blade.php";
 
-        $path = $this->path . $fileName;
+        $path = $this->path . 'admin/' . $fileName;
 
         $this->commandData->fileHelper->writeFile($path, $templateData);
         $this->commandData->commandObj->info("create.blade.php created");
@@ -150,7 +154,7 @@ class ModuleViewGenerator implements GeneratorProvider
 
         $fileName = "edit.blade.php";
 
-        $path = $this->path . $fileName;
+        $path = $this->path . 'admin/' . $fileName;
 
         $this->commandData->fileHelper->writeFile($path, $templateData);
         $this->commandData->commandObj->info("edit.blade.php created");
