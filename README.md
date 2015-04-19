@@ -6,6 +6,7 @@ Steps to Get Started
 1. Add this package to your composer.json:
   
         "require": {
+            "pingpong/modules": "2.0.*@dev",
             "aitiba/laravelapigeneratorextend": "dev-master"
         }
   
@@ -27,13 +28,15 @@ Steps to Get Started
    Also for convenience, add these facades in alias array in ```config/app.php```.
 
         'Module'=> 'Pingpong\Modules\Facades\Module',
-		'Form'  => 'Illuminate\Html\FormFacade',
-		'HTML'  => 'Illuminate\Html\HtmlFacade',
-		'Flash' => 'Laracasts\Flash\Flash'
+        'Form'  => 'Illuminate\Html\FormFacade',
+        'HTML'  => 'Illuminate\Html\HtmlFacade',
+        'Flash' => 'Laracasts\Flash\Flash'
 
-4. Publish ```generator.php```
+4. Publish ```generator.php``` and ```modules.php```
 
-        php artisan vendor:publish --provider="Mitul\Generator\GeneratorServiceProvider"
+        php artisan vendor:publish --provider="Aitiba\LaravelApiGeneratorExtend\Generator\GeneratorServiceProvider"
+
+        php artisan vendor:publish
 
 5. Fire artisan command to generate module with model.
 

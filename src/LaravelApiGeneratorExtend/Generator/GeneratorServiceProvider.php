@@ -16,10 +16,10 @@ class GeneratorServiceProvider extends ServiceProvider
 	public function boot()
 	{
 		// dd("pasa");
-		$configPath = __DIR__ . '/../../../config/generator.php';
+		$configPath = __DIR__ . 'Config/generator.php';
 		$this->publishes([$configPath => config_path('generator.php')], 'config');
 		$this->publishes([
-			__DIR__.'/../../../views' => base_path('resources/views'),
+			__DIR__.'Views/Common' => base_path('resources/views'),
 		]);
 	}
 
