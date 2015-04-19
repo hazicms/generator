@@ -9,7 +9,7 @@
 
     @include('common.errors')
 
-    {!! Form::open(['route' => '$MODEL_NAME_PLURAL_CAMEL$.store']) !!}
+    {!! Form::open(['route' => 'admin.$MODEL_NAME_PLURAL_CAMEL$.store']) !!}
 
         @include('$MODULE_NAME$::$MODEL_NAME$.form')
 

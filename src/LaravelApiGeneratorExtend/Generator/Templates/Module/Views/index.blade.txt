@@ -43,7 +43,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <i class="fa fa-plus-circle"></i>
-                    {!! link_to(route('$MODEL_NAME_PLURAL_CAMEL$.create'), 'New $MODEL_NAME_CAMEL$', ['id' => 'create$MODEL_NAME$']) !!}
+                    {!! link_to(route('admin.$MODEL_NAME_PLURAL_CAMEL$.create'), 'New $MODEL_NAME_CAMEL$', ['id' => 'create$MODEL_NAME$']) !!}
                 </div>
                 
                 <!-- /.panel-heading -->
@@ -74,12 +74,12 @@
                                                         <a href="{{route('$MODEL_NAME_PLURAL_CAMEL$.show', $$MODEL_NAME_CAMEL$->id)}}" title="Show" alt="Show">
                                                             <i class='fa fa-eye' style="color:black;;margin-right:5px"></i>
                                                         </a>
-                                                        <a href="{{route('$MODEL_NAME_PLURAL_CAMEL$.edit', $$MODEL_NAME_CAMEL$->id)}}" title="Edit" alt="Edit">
+                                                        <a href="{{route('admin.$MODEL_NAME_PLURAL_CAMEL$.edit', $$MODEL_NAME_CAMEL$->id)}}" title="Edit" alt="Edit">
                                                             <i class='fa fa-pencil-square-o' style="color:black;margin-right:5px"></i>
                                                         </a>
                                                         <!-- <i class="fa fa-times"></i> -->
                                                         <span class="delete">
-                                                            {!! Form::open(['route' => ['$MODEL_NAME_PLURAL_CAMEL$.destroy', $$MODEL_NAME_CAMEL$->id], 'method' => 'delete', 'style' => 'float:right']) !!}
+                                                            {!! Form::open(['route' => ['admin.$MODEL_NAME_PLURAL_CAMEL$.destroy', $$MODEL_NAME_CAMEL$->id], 'method' => 'delete', 'style' => 'float:right']) !!}
                                                                 <!-- <span>{!! Form::submit('Borrar', ['class' => 'delButton']) !!}</span> -->
                                                                 <button type="submit" style="margin-left:-95%;" onclick="return confirm('Are you sure wants to delete this $MODEL_NAME$?')">
                                                                     <i class="delButton fa fa-times"></i>
