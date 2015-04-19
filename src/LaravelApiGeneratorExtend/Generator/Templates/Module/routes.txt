@@ -1,4 +1,0 @@
-Route::get('$MODEL_NAME_PLURAL_CAMEL$/{id}/delete', [
-    'as' => '$MODEL_NAME_PLURAL_CAMEL$.delete',
-    'uses' => '$NAMESPACE_BASE$@destroy',
-]);

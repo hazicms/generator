@@ -75,14 +75,16 @@ class ModuleRoutesGenerator implements GeneratorProvider
         $this->commandData->base = $namespace.'\\'.$module.'\\'.$controller.'\\'.$this->commandData->modelName."Controller";
 
         $routes = "\n\nRoute::resource('" . $this->commandData->modelNamePluralCamel . "', '".$this->commandData->base."');";
+        $routes .= "\n\nRoute::get('" . $this->commandData->modelNamePluralCamel . "/{id}', [\n'as' => '" . $this->commandData->modelNamePluralCamel . ".show ',\n'uses' => '".$this->commandData->base."@destroy'\n]);";
 
         // $deleteRoutes = $this->commandData->templatesHelper->getTemplate("routes", "Scaffold");
-        $moduleTemplate = new TemplatesHelper();
-        $deleteRoutes = $moduleTemplate->getTemplate("routes", "Module");
+        // $moduleTemplate = new TemplatesHelper();
+        // $deleteRoutes = $moduleTemplate->getTemplate("routes", "Module");
 
-        $deleteRoutes = $this->fillTemplate($deleteRoutes);
+        // $deleteRoutes = $this->fillTemplate($deleteRoutes);
 
-        return $routes . "\n\n" . $deleteRoutes;
+        // return $routes . "\n\n" . $deleteRoutes;
+        return $routes;
     }
 
 }
