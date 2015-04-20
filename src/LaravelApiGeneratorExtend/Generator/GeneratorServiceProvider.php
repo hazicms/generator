@@ -1,9 +1,6 @@
 <?php namespace Aitiba\LaravelApiGeneratorExtend\Generator;
 
 use Illuminate\Support\ServiceProvider;
-// use Mitul\Generator\Commands\APIGeneratorCommand;
-// use Mitul\Generator\Commands\ScaffoldAPIGeneratorCommand;
-// use Mitul\Generator\Commands\ScaffoldGeneratorCommand;
 
 class GeneratorServiceProvider extends ServiceProvider
 {
@@ -15,7 +12,6 @@ class GeneratorServiceProvider extends ServiceProvider
 	 */
 	public function boot()
 	{
-		// dd("pasa");
 		$configPath = __DIR__ . '/../Config/generator.php';
 		$this->publishes([$configPath => config_path('generator.php')], 'config');
 		$this->publishes([
@@ -35,11 +31,6 @@ class GeneratorServiceProvider extends ServiceProvider
             return new Commands\ModuleModelGeneratorCommand();
         });
  
- 	// 	$this->app->singleton('mitul.generator.scaffold_api', function ($app)
-		// {
-		// 	return new ScaffoldAPIGeneratorCommand();
-		// });
-
 		$this->app->singleton(
 			'Illuminate\Contracts\Debug\ExceptionHandler',
 			'Mitul\Generator\Exceptions\APIExceptionsHandler'

@@ -6,7 +6,8 @@ Steps to Get Started
 1. Add this package to your composer.json:
   
         "require": {
-            "pingpong/modules": "2.0.*@dev",
+            "pingpong/generators": "2.0.*@dev",
+            "pingpong/modules": "2.0.x-dev",
             "aitiba/laravelapigeneratorextend": "dev-master"
         }
   
@@ -38,7 +39,11 @@ Steps to Get Started
 
         php artisan vendor:publish
 
-5. Fire artisan command to generate module with model.
+5. Modify ```modules.php``` file to your needs.On Cms, change 'namespace' => 'Cms\Modules', and 'modules' => app_path('Modules').
+
+6. Modify ```generator.php``` file to your needs.
+
+7. Fire artisan command to generate module with model.
 
         php artisan mitul.generator:module_model ModuleName ModelName
         
@@ -47,6 +52,6 @@ Steps to Get Started
         php artisan mitul.generator:module_model Network Project
         php artisan mitul.generator:module_model Blog Post
  
-6. Enter the fields with options<br>
+8. Enter the fields with options<br>
 
-7. And you are ready to go. :)
+9. And you are ready to go. :)

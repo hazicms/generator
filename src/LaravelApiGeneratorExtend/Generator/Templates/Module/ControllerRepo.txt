@@ -3,7 +3,7 @@
 use Cms\Http\Requests;
 use $REQUEST_NAMESPACE$\Create$MODEL_NAME$Request;
 use $REPO_NAMESPACE$\$MODEL_NAME$Repository;
-use Mitul\Controller\AppBaseController;
+use Aitiba\LaravelApiGeneratorExtend\Controller\AppBaseController;
 use Response;
 use Flash;
 
