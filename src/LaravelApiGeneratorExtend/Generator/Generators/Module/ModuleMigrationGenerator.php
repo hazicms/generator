@@ -3,7 +3,7 @@
 use \Config;
 use Mitul\Generator\CommandData;
 use Mitul\Generator\Generators\GeneratorProvider;
-use Aitiba\LaravelApiGeneratorExtend\Generator\SchemaCreator;
+use Mitul\Generator\SchemaCreator;
 
 class ModuleMigrationGenerator implements GeneratorProvider
 {
