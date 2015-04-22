@@ -40,7 +40,8 @@ class SchemaCreator
 	public static function map($fieldType)
     {
     	//TODO: move to generator.generator_fields_map config
-    	$array = ['textarea' => 'text'];
+    	$array = ['textarea' => 'text',
+    			 'text' => 'string'];
 
         if (!array_key_exists($fieldType, $array)) return $fieldType;
 
