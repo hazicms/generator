@@ -54,8 +54,11 @@ class ModuleViewGenerator implements GeneratorProvider
 
         foreach($this->commandData->inputFields as $field)
         {
+            // $fieldType = $this->map($field['fieldType']);
+            //dd($field['fieldType']);
             $singleFieldStr = str_replace('$FIELD_NAME_TITLE$', Str::title($field['fieldName']), $fieldTemplate);
             $singleFieldStr = str_replace('$FIELD_NAME$', $field['fieldName'], $singleFieldStr);
+            $singleFieldStr = str_replace('$FIELD_TYPE$', $field['fieldType'], $singleFieldStr);
 
             $fieldsStr .= $singleFieldStr . "\n\n";
         }
@@ -74,6 +77,17 @@ class ModuleViewGenerator implements GeneratorProvider
 
         $this->commandData->fileHelper->writeFile($path, $templateData);
         $this->commandData->commandObj->info("field.blade.php created");
+    }
+
+
+    private function map($fieldType)
+    {
+        //$array = ['radio' => 'a'];
+
+        //TODO: move to generator.generator_views_map config
+        // if (!array_key_exists($fieldType, $array)) return $fieldType;
+
+        // return $array[$fieldType];
     }
 
     private function generateIndex()
