@@ -41,7 +41,8 @@ class SchemaCreator
     {
     	//TODO: move to generator.generator_fields_map config
     	$array = ['textarea' => 'text',
-    			 'text' => 'string'];
+    			 'text' => 'string',
+    			 'select' => 'enum'];
 
         if (!array_key_exists($fieldType, $array)) return $fieldType;
 
