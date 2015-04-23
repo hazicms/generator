@@ -10,9 +10,13 @@ class SchemaCreator
 
 		if(!empty($field['fieldTypeParams']))
 		{
-			foreach($field['fieldTypeParams'] as $param)
-			{
-				$fieldStr .= ", " . $param;
+			if($field['fieldValues'] != null) {
+				$fieldStr .= ", ['".implode("', '", array_keys($field['fieldValues']))."']";
+			} else {
+				foreach($field['fieldTypeParams'] as $param)
+				{
+					$fieldStr .= ", " . $param;
+				}
 			}
 		}
 

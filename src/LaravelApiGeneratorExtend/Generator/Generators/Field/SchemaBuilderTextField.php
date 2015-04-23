@@ -3,7 +3,7 @@
 use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\Field;
 use Form;
 
-class SchemaBuilderSelectField implements Field {
+class SchemaBuilderTextField implements Field {
 
 	/**
 	 * Define the response Html for field.
@@ -16,9 +16,7 @@ class SchemaBuilderSelectField implements Field {
 	 * @return Response
 	 */
 	public function getHtml($name, $value = null, $default, array $attr = null) {
-		// return Form::select($name, $value, $default, $attr);
-		// dd($value);
-		// dd(Form::select($name, $value, $default, $attr));
-		return Form::select($name, $value, $default, $attr);
+		$attr['class'] = "form-control";
+		return Form::text($name, null, $attr);
 	}
 }

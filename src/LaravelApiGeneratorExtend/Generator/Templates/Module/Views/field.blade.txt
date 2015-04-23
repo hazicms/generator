@@ -2,7 +2,7 @@
 		    <div class="box-body">
 				<!-- $FIELD_NAME_TITLE$ Field -->
 				{!! Form::label('$FIELD_NAME$', '$FIELD_NAME_TITLE$:') !!}
-		    	{!! Form::$FIELD_TYPE$('$FIELD_NAME$', null, ['class' => 'form-control']) !!}
+		    	$FIELD_TYPE$
 		    </div>
 
 		    @if($errors->first('$FIELD_NAME$'))

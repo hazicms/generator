@@ -5,6 +5,9 @@ use Illuminate\Support\Str;
 use Mitul\Generator\CommandData;
 use Mitul\Generator\Generators\GeneratorProvider;
 use Aitiba\LaravelApiGeneratorExtend\Generator\Templates\TemplatesHelper;
+use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\SchemaBuilderSelectField;
+use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\SchemaBuilderFloatField;
+use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\SchemaBuilderTextField;
 
 class ModuleViewGenerator implements GeneratorProvider
 {
@@ -52,13 +55,15 @@ class ModuleViewGenerator implements GeneratorProvider
 
         $fieldsStr = "";
 
+
         foreach($this->commandData->inputFields as $field)
         {
+            $fieldType = $this->generateField($field['fieldName'], $field['fieldType'], $field['fieldTypeParams'], $field['fieldValues'], $field['fieldDefault']);
             // $fieldType = $this->map($field['fieldType']);
-            //dd($field['fieldType']);
+            // dd($field);
             $singleFieldStr = str_replace('$FIELD_NAME_TITLE$', Str::title($field['fieldName']), $fieldTemplate);
             $singleFieldStr = str_replace('$FIELD_NAME$', $field['fieldName'], $singleFieldStr);
-            $singleFieldStr = str_replace('$FIELD_TYPE$', $field['fieldType'], $singleFieldStr);
+            $singleFieldStr = str_replace('$FIELD_TYPE$', $fieldType, $singleFieldStr);
 
             $fieldsStr .= $singleFieldStr . "\n\n";
         }
@@ -79,15 +84,54 @@ class ModuleViewGenerator implements GeneratorProvider
         $this->commandData->commandObj->info("field.blade.php created");
     }
 
-
     private function map($fieldType)
     {
-        //$array = ['radio' => 'a'];
+        $array = ['float' => 'number'];
 
         //TODO: move to generator.generator_views_map config
-        // if (!array_key_exists($fieldType, $array)) return $fieldType;
+        if (!array_key_exists($fieldType, $array)) return $fieldType;
 
-        // return $array[$fieldType];
+        return $array[$fieldType];
+    }
+
+    private function generateField($fieldName, $fieldType, $fieldTypeParams, $fieldValues, $fieldDefault)
+    {
+        // dd($fieldTypeParams);
+        $fieldType = $this->map($fieldType);
+
+        // dd($fieldType);
+        switch ($fieldType) {
+            //  group:select,'id' => 'mySelect', 'class' => 'red':['admin' => 'admin','user' => 'user']:user
+            case 'select':
+                $select = new SchemaBuilderSelectField;
+                return $select->getHtml($fieldName, $fieldValues, $fieldDefault, $fieldTypeParams);
+                break;
+                // title:text,'size' => 255
+            case 'text':
+                $field = new SchemaBuilderTextField;
+                return $field->getHtml($fieldName, $fieldValues, $fieldDefault, $fieldTypeParams);
+                break;
+            
+            default:
+                # code...
+                break;
+        }
+        // $data = [
+    //  'values' => [0 => 'admin', 1 => 'user'],
+    //  'default' => 1,
+    //  'attr'   => ['id' => 'mySelect', 'class' => 'red']
+    // ];
+
+    // $select = new SchemaBuilderSelectField;
+    // echo ($select->getHtml('group', $data['values'], $data['default'],$data['attr']));
+    //
+    
+    // $data = [
+    //     'attr'   => ['step' => '0.1', 'min' => '1', 'max' => '5']
+    // ];
+
+    // $select = new SchemaBuilderFloatField;
+    // echo ($select->getHtml('group', null, null,$data['attr']));
     }
 
     private function generateIndex()

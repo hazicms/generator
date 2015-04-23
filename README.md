@@ -54,4 +54,8 @@ Steps to Get Started
  
 8. Enter the fields with options<br>
 
+    Examples:
+        * Select: group:select,'id' => 'mySelect', 'class' => 'red':['admin' => 'admin','user' => 'user']:user
+        * Text: title:text,'size' => 255
+
 9. And you are ready to go. :)

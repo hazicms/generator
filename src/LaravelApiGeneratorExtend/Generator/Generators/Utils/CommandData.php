@@ -69,27 +69,60 @@ class CommandData
 				break;
 
 			$fieldInputs = explode(":", $fieldInputStr);
-
-			if(sizeof($fieldInputs) < 2)
+// var_dump($fieldInputs);
+			if(sizeof($fieldInputs) < 2 OR sizeof($fieldInputs) > 4)
 			{
 				$this->commandObj->error("Invalid Input. Try again");
 				continue;
 			}
 
 			$fieldName = $fieldInputs[0];
-
 			$fieldTypeOptions = explode(",", $fieldInputs[1]);
 			$fieldType = $fieldTypeOptions[0];
 			$fieldTypeParams = [];
-			if(sizeof($fieldTypeOptions) > 1)
-			{
-				for($i = 1; $i < sizeof($fieldTypeOptions); $i++)
-					$fieldTypeParams[] = $fieldTypeOptions[$i];
+			// if(sizeof($fieldTypeOptions) == 1)
+			// {
+			for($i = 1; $i < sizeof($fieldTypeOptions); $i++) {
+				// dd($fieldTypeOptions);
+				if (strpos($fieldTypeOptions[$i],"=>") !== false) {
+					$option = explode("=>", $fieldTypeOptions[$i]);
+					$option = $this->sanitizeArrayCommandData($option);
+					// $option[0] = trim(rtrim($option[0],"'"),"'");
+					// $option[1] = trim(rtrim($option[1]));
+					$fieldTypeParams[$option[0]] = $option[1];
+				} else {
+					$fieldTypeOptions = explode(",", $fieldInputs[1]);
+					$fieldType = $fieldTypeOptions[0];
+					$fieldTypeParams = [];
+					if(sizeof($fieldTypeOptions) > 1)
+					{
+						for($i = 1; $i < sizeof($fieldTypeOptions); $i++)
+							$fieldTypeParams[] = $fieldTypeOptions[$i];
+					}
+				}
+			}
+				//dd($fieldTypeParams);
+			// }
+
+// 			$fieldOptions = [];
+// 			if(sizeof($fieldInputs) > 2) {
+// 				$fieldOptions[] = $fieldInputs[2];				
+// 			}
+// dd($fieldOptions);
+			$fieldValues = null;
+			if (isset($fieldInputs[2])) {
+				$fieldInputs[2] = $this->sanitizeArrayExplode($fieldInputs[2]);
+				// dd($fieldInputs[2]);
+				// foreach ($fieldInputs[2] as $key => $value) {
+				// 	var_dump($value);
+				// }
+				// dd("a");
+				$fieldValues = $fieldInputs[2];
 			}
 
-			$fieldOptions = [];
-			if(sizeof($fieldInputs) > 2)
-				$fieldOptions[] = $fieldInputs[2];
+			$fieldDefault = null;
+			if(isset($fieldInputs[3]))
+				$fieldDefault = $fieldInputs[3];
 
 			$validations = $this->commandObj->ask("Enter validations: ");
 
@@ -97,13 +130,65 @@ class CommandData
 				'fieldName'       => $fieldName,
 				'fieldType'       => $fieldType,
 				'fieldTypeParams' => $fieldTypeParams,
-				'fieldOptions'    => $fieldOptions,
+				// 'fieldOptions'    => $fieldOptions,
+				'fieldValues'	  => $fieldValues,
+				'fieldDefault'	  => $fieldDefault,
 				'validations'     => $validations
 			];
 
 			$fields[] = $field;
+			// dd($fields);
 		}
 
 		return $fields;
+	}
+
+	private function sanitizeArrayExplode($inputs)
+	{
+			$inputs = substr($inputs, 1);
+			// dd($string);
+			$inputs = substr($inputs, 1, strlen($inputs)-3);
+		$inputs = explode(",", $inputs);
+
+		for($i = 1; $i < sizeof($inputs); $i++) {
+			// echo $inputs[$i];
+			// $inputs[$i] = trim($inputs[$i]);
+			// $inputs[$i] = rtrim($inputs[$i], "[");
+			// $inputs[$i] = str_replace($inputs[$i], "", "[");
+			// $inputs[$i] = str_replace($inputs[$i], "", "']");
+			// $inputs[$i] = trim($inputs[$i], "']");
+			
+			// dd($inputs);
+			//$input = explode(",", $inputs);
+			$res = [];
+			foreach ($inputs as $x => $input) {
+				$in = explode("=>", $input);
+				$in[0] = trim($in[0]);
+				$in[0] = trim($in[0], "'");
+				$in[1] = trim($in[1]);
+				$in[1] = trim($in[1], "'");
+
+				// $strr = $strr[$x];
+				//var_dump($in);
+				$res[$in[0]] = $in[$x];
+			}
+			// dd($res);
+		}
+		return $res;
+	}
+
+	private function sanitizeArrayCommandData($option) 
+	{
+		//array_walk
+	
+		$option[0] = trim($option[0]);
+		$option[0] = trim($option[0],"'");
+		$option[0] = rtrim($option[0],"'");
+		
+		$option[1] = trim($option[1]);
+		$option[1] = trim($option[1],"'");
+		$option[1] = rtrim($option[1],"'");
+
+		return $option;
 	}
 }
