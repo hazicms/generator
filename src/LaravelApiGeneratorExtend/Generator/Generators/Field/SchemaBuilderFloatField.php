@@ -1,7 +1,6 @@
 <?php namespace Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field;
 
 use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\Field;
-use Form;
 
 class SchemaBuilderFloatField extends FieldHelper implements Field {
 
@@ -16,8 +15,10 @@ class SchemaBuilderFloatField extends FieldHelper implements Field {
 	 * @return string
 	 */
 	public function getHtml($name, $value = null, $default = null, array $attr = null) {
-		// return Form::number('a');
-		return "Form::input('number', '".$name."', '".$value."', ".Field::arrayToString($attr).")";
+		// return "Form::input('number', '".$name."', '".$value."', ".FieldHelper::arrayToString($attr).")";
+		
+		$format = "Form::integer('number', '%s', '%s', %s)";
+		return sprintf($format, $name, $value, FieldHelper::arrayToString($attr));
 	}
 
 }

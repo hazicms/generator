@@ -1,7 +1,5 @@
 <?php namespace Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field;
 
-use Form;
-
 class SchemaBuilderSelectField extends FieldHelper implements Field {
 
 	/**
@@ -16,7 +14,9 @@ class SchemaBuilderSelectField extends FieldHelper implements Field {
 	 */
 	public function getHtml($name, $value = null, $default, array $attr = null) {
 	
-		return "Form::select('".$name."', ".FieldHelper::arrayToString($value).", ".$default.", ".FieldHelper::arrayToString($attr).")";
+		// return "Form::select('".$name."', ".FieldHelper::arrayToString($value).", ".$default.", ".FieldHelper::arrayToString($attr).")";
 	
+		$format = "Form::select('%s', %s, %s, %s)";
+		return sprintf($format, $name, FieldHelper::arrayToString($value), $default, FieldHelper::arrayToString($attr));
 	}
 }

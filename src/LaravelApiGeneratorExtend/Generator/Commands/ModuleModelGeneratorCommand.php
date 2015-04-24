@@ -67,10 +67,6 @@ class ModuleModelGeneratorCommand extends Command
             echo ('MODULE EXISTS... Great! Less work! :-)');
         }
 
-        // crear el CRUD de $name
-        // $tmpPath = '/var/www/myblog/storage/app/laravel-generator/'.$this->commandData->modelName;
-        // File::makeDirectory($tmpPath, 0777, true, true);
-        // \Artisan::call('mitul.generator:scaffold', ['model' => $this->commandData->modelName]);
         $this->getData();
     }
 
@@ -79,8 +75,6 @@ class ModuleModelGeneratorCommand extends Command
         $this->commandData->initVariables();
         $this->commandData->inputFields = $this->commandData->getInputFields();
 
-        // $followRepoPattern = $this->confirm("\nDo you want to generate repository ? (y|N)", false);
-        $followRepoPattern = false;
         $migrationGenerator = new ModuleMigrationGenerator($this->commandData);
         $migrationGenerator->generate();
 
@@ -90,19 +84,11 @@ class ModuleModelGeneratorCommand extends Command
         $requestGenerator = new ModuleRequestGenerator($this->commandData);
         $requestGenerator->generate();
 
-        // if($followRepoPattern)
-        // {
-            $repositoryGenerator = new ModuleRepositoryGenerator($this->commandData);
-            $repositoryGenerator->generate();
+        $repositoryGenerator = new ModuleRepositoryGenerator($this->commandData);
+        $repositoryGenerator->generate();
 
-            $repoControllerGenerator = new ModuleRepoViewControllerGenerator($this->commandData);
-            $repoControllerGenerator->generate();
-        // }
-        // else
-        // {
-        //     $controllerGenerator = new ModuleViewControllerGenerator($this->commandData);
-        //     $controllerGenerator->generate();
-        // }
+        $repoControllerGenerator = new ModuleRepoViewControllerGenerator($this->commandData);
+        $repoControllerGenerator->generate();
 
         $viewsGenerator = new ModuleViewGenerator($this->commandData);
         $viewsGenerator->generate();
@@ -113,7 +99,7 @@ class ModuleModelGeneratorCommand extends Command
         if($this->confirm("\nDo you want to migrate database? [y|N]", false)) {
             $particular =  Config::get('generator.tmp_modules', 'app/Modules/').ucfirst($this->commandData->moduleName).'/';
             $path = $particular.Config::get('generator.path_migration_module', app_path('Database/Migrations/'));
-            // si no existe la tabla $this->commandData->moduleName
+                // TODO: if table doesnt exist $this->commandData->moduleName
                 $this->call('migrate', ['--path' => $path]);
         }
     }
@@ -125,7 +111,6 @@ class ModuleModelGeneratorCommand extends Command
      */
     protected function getArguments()
     {
-        // dd("arg");
         return [
             ['module', InputArgument::REQUIRED, 'Singular Module name'],
             ['model', InputArgument::REQUIRED, 'Singular Model name']

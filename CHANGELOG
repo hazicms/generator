@@ -1,0 +1,12 @@
+== v0.9 == (20/04/2015)
+
+Mixed mitulgolakiya's laravel API generator[0] and pingpong's module[1]
+packages on a new commad: mitul.generator:module_model.
+
+[0] https://github.com/mitulgolakiya/laravel-api-generator
+[1] http://sky.pingpong-labs.com/docs/2.0/modules
+
+
+== v1.0 ==
+
+  WORKING ON IT to have a field generator for text,float,boolean...
