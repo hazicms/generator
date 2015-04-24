@@ -1,9 +1,8 @@
 <?php namespace Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field;
 
-use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\Field;
 use Form;
 
-class SchemaBuilderSelectField implements Field {
+class SchemaBuilderSelectField extends FieldHelper implements Field {
 
 	/**
 	 * Define the response Html for field.
@@ -13,24 +12,11 @@ class SchemaBuilderSelectField implements Field {
 	 * @param $default integer/string
 	 * @param $attr array
 	 * 
-	 * @return Response
+	 * @return string
 	 */
 	public function getHtml($name, $value = null, $default, array $attr = null) {
-		// return Form::select($name, $value, $default, $attr);
-		// dd($value);
-		// dd(Form::select($name, $value, $default, $attr));
-		return "Form::select('".$name."', ".$this->arrayToString($value).", ".$default.", ".$this->arrayToString($attr).")";
-	}
-
-	private function arrayToString($attr)
-	{
-		$attrStr = "[";
-		foreach($attr as $key => $value) {
-			$attrStr .= "'".$key."' => '".$value."',";
-		}
-		$attrStr = substr($attrStr, 0, -1);
-		$attrStr .= "]";
-
-		return $attrStr;
+	
+		return "Form::select('".$name."', ".FieldHelper::arrayToString($value).", ".$default.", ".FieldHelper::arrayToString($attr).")";
+	
 	}
 }

@@ -3,7 +3,7 @@
 use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\Field;
 use Form;
 
-class SchemaBuilderFloatField implements Field {
+class SchemaBuilderFloatField extends FieldHelper implements Field {
 
 	/**
 	 * Define the response Html for field.
@@ -13,22 +13,11 @@ class SchemaBuilderFloatField implements Field {
 	 * @param $default integer/string
 	 * @param $attr array
 	 * 
-	 * @return Response
+	 * @return string
 	 */
 	public function getHtml($name, $value = null, $default = null, array $attr = null) {
 		// return Form::number('a');
-		return "Form::input('number', '".$name."', '".$value."', ".arrayToString($attr).")";
+		return "Form::input('number', '".$name."', '".$value."', ".Field::arrayToString($attr).")";
 	}
 
-	private function arrayToString($attr)
-	{
-		$attrStr = "[";
-		foreach($attr as $key => $value) {
-			$attrStr .= "'".$key."' => '".$value."',";
-		}
-		$attrStr = substr($attrStr, 0, -1);
-		$attrStr .= "]";
-
-		return $attrStr;
-	}
 }
