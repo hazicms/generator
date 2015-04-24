@@ -17,6 +17,18 @@ class SchemaBuilderFloatField implements Field {
 	 */
 	public function getHtml($name, $value = null, $default = null, array $attr = null) {
 		// return Form::number('a');
-		return Form::input('number', $name, $value, $attr);
+		return "Form::input('number', '".$name."', '".$value."', ".arrayToString($attr).")";
+	}
+
+	private function arrayToString($attr)
+	{
+		$attrStr = "[";
+		foreach($attr as $key => $value) {
+			$attrStr .= "'".$key."' => '".$value."',";
+		}
+		$attrStr = substr($attrStr, 0, -1);
+		$attrStr .= "]";
+
+		return $attrStr;
 	}
 }

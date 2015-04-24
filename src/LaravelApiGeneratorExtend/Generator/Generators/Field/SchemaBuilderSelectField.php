@@ -19,6 +19,18 @@ class SchemaBuilderSelectField implements Field {
 		// return Form::select($name, $value, $default, $attr);
 		// dd($value);
 		// dd(Form::select($name, $value, $default, $attr));
-		return Form::select($name, $value, $default, $attr);
+		return "Form::select('".$name."', ".$this->arrayToString($value).", ".$default.", ".$this->arrayToString($attr).")";
+	}
+
+	private function arrayToString($attr)
+	{
+		$attrStr = "[";
+		foreach($attr as $key => $value) {
+			$attrStr .= "'".$key."' => '".$value."',";
+		}
+		$attrStr = substr($attrStr, 0, -1);
+		$attrStr .= "]";
+
+		return $attrStr;
 	}
 }

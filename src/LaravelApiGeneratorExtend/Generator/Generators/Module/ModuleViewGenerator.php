@@ -104,7 +104,7 @@ class ModuleViewGenerator implements GeneratorProvider
             //  group:select,'id' => 'mySelect', 'class' => 'red':['admin' => 'admin','user' => 'user']:user
             case 'select':
                 $select = new SchemaBuilderSelectField;
-                return $select->getHtml($fieldName, $fieldValues, $fieldDefault, $fieldTypeParams);
+                return $select->getHtml($fieldName, $fieldValues, "$".$this->commandData->modelNameCamel."->".$fieldName, $fieldTypeParams);
                 break;
                 // title:text,'size' => 255
             case 'text':
