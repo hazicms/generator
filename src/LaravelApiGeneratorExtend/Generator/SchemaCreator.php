@@ -4,6 +4,9 @@ class SchemaCreator
 {
 	public static function createField($field)
 	{
+		// params allowed on migrations
+		$allowedParams = ['size'];
+
 		$fieldType = self::map($field['fieldType']);
 
 		$fieldStr = "\t\t\t\$table->" . $fieldType . "('" . $field['fieldName'] . "'";
@@ -14,9 +17,9 @@ class SchemaCreator
 				$fieldStr .= ", ['".implode("', '", array_keys($field['fieldValues']))."']";
 			} else {
 				//dd($field['fieldTypeParams']);
-				foreach($field['fieldTypeParams'] as $param)
+				foreach($field['fieldTypeParams'] as $key => $param)
 				{
-					$fieldStr .= ", " . $param;
+					if(in_array($key, $allowedParams))  $fieldStr .= ", " . $param;
 				}
 			}
 		}

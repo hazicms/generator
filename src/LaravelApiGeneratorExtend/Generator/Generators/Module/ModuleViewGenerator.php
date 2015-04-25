@@ -86,7 +86,7 @@ class ModuleViewGenerator implements GeneratorProvider
 
     private function map($fieldType)
     {
-        $array = ['float' => 'number'];
+        $array = ['float' => 'double'];
 
         //TODO: move to generator.generator_views_map config
         if (!array_key_exists($fieldType, $array)) return $fieldType;
@@ -96,15 +96,12 @@ class ModuleViewGenerator implements GeneratorProvider
 
     private function generateField($fieldName, $fieldType, $fieldTypeParams, $fieldValues, $fieldDefault)
     {
-        // dd($fieldTypeParams);
         $fieldType = $this->map($fieldType);
-
-        // dd($fieldType);
+    
         switch ($fieldType) {
             // group:select,'id' => 'mySelect', 'class' => 'red':['admin' => 'admin','user' => 'user']:user
             case 'select':
                 $select = new SchemaBuilderSelectField($this->commandData);
-
                 return $select->getHtml($fieldName, $fieldValues, 'null', $fieldTypeParams);
                 break;
             
@@ -113,27 +110,18 @@ class ModuleViewGenerator implements GeneratorProvider
                 $field = new SchemaBuilderTextField();
                 return $field->getHtml($fieldName, $fieldValues, $fieldDefault, $fieldTypeParams);
                 break;
+
+            // price:float,'min' => 1, 'max' => 10
+            case 'double':
+                $field = new SchemaBuilderFloatField();
+                return $field->getHtml($fieldName, 'null', 'null', $fieldTypeParams);
+                break;
             
             default:
-                # code...
+                dd("This field types doesnt exist. Create one please!"); 
                 break;
         }
-        // $data = [
-    //  'values' => [0 => 'admin', 1 => 'user'],
-    //  'default' => 1,
-    //  'attr'   => ['id' => 'mySelect', 'class' => 'red']
-    // ];
 
-    // $select = new SchemaBuilderSelectField;
-    // echo ($select->getHtml('group', $data['values'], $data['default'],$data['attr']));
-    //
-    
-    // $data = [
-    //     'attr'   => ['step' => '0.1', 'min' => '1', 'max' => '5']
-    // ];
-
-    // $select = new SchemaBuilderFloatField;
-    // echo ($select->getHtml('group', null, null,$data['attr']));
     }
 
     private function generateIndex()
