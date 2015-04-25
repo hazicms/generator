@@ -86,7 +86,7 @@ class ModuleModelGeneratorCommand extends Command
 
         $repositoryGenerator = new ModuleRepositoryGenerator($this->commandData);
         $repositoryGenerator->generate();
-
+        
         $repoControllerGenerator = new ModuleRepoViewControllerGenerator($this->commandData);
         $repoControllerGenerator->generate();
 

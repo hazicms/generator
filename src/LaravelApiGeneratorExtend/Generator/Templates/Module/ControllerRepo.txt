@@ -38,7 +38,7 @@ class $MODEL_NAME$Controller extends AppBaseController
 	 */
 	public function create()
 	{
-		return view('$MODULE_NAME$::$MODEL_NAME$.admin.create')->with('projectDefault', null);
+		return view('$MODULE_NAME$::$MODEL_NAME$.admin.create');
 	}
 
 	/**
@@ -95,7 +95,7 @@ class $MODEL_NAME$Controller extends AppBaseController
 			return redirect(route('admin.$MODEL_NAME_PLURAL_CAMEL$.index'));
 		}
 
-		return view('$MODULE_NAME$::$MODEL_NAME$.admin.edit')->with('$MODEL_NAME_CAMEL$', $$MODEL_NAME_CAMEL$)->with('projectDefault', $$MODEL_NAME_CAMEL$->group);
+		return view('$MODULE_NAME$::$MODEL_NAME$.admin.edit')->with('$MODEL_NAME_CAMEL$', $$MODEL_NAME_CAMEL$);
 	}
 
 	/**

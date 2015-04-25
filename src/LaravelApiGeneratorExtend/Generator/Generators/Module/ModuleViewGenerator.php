@@ -101,14 +101,16 @@ class ModuleViewGenerator implements GeneratorProvider
 
         // dd($fieldType);
         switch ($fieldType) {
-            //  group:select,'id' => 'mySelect', 'class' => 'red':['admin' => 'admin','user' => 'user']:user
+            // group:select,'id' => 'mySelect', 'class' => 'red':['admin' => 'admin','user' => 'user']:user
             case 'select':
-                $select = new SchemaBuilderSelectField;
-                return $select->getHtml($fieldName, $fieldValues, "projectDefault", $fieldTypeParams);
+                $select = new SchemaBuilderSelectField($this->commandData);
+
+                return $select->getHtml($fieldName, $fieldValues, 'null', $fieldTypeParams);
                 break;
-                // title:text,'size' => 255
+            
+            // title:text,'size' => 255
             case 'text':
-                $field = new SchemaBuilderTextField;
+                $field = new SchemaBuilderTextField();
                 return $field->getHtml($fieldName, $fieldValues, $fieldDefault, $fieldTypeParams);
                 break;
             
