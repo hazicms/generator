@@ -1,12 +1,14 @@
-<?php namespace Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Module;
+<?php
+
+namespace Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Module;
 
 use Config;
 use Mitul\Generator\CommandData;
 use Mitul\Generator\Generators\GeneratorProvider;
+use Aitiba\LaravelApiGeneratorExtend\Generator\Templates\TemplatesHelper;
 
 class ModuleRepositoryGenerator implements GeneratorProvider
 {
-    /** @var  CommandData */
     private $commandData;
 
     private $path;
@@ -17,22 +19,19 @@ class ModuleRepositoryGenerator implements GeneratorProvider
     {
         $this->commandData = $commandData;
 
-        // $this->path = Config::get('generator.path_repository', app_path('/Libraries/Repositories/'));
         $particular =  base_path(Config::get('generator.tmp_modules', 'app/Modules/')).ucfirst($commandData->moduleName).'/';
         $this->path = $particular.Config::get('generator.path_repository_module', app_path('/'));
-
-        // $this->namespace = Config::get('generator.namespace_repository', 'App\Libraries\Repositories');
         $particular = Config::get('generator.namespace_base', 'App').'\\'.ucfirst($commandData->moduleName).'\\';
         $this->namespace = $particular.Config::get('generator.namespace_repository_module', 'App\Libraries\Repositories');
-        // dd($this->namespace);
     }
 
     function generate()
     {
-        //  Cms\Modules\Modulo\Entities\Modelo
         $this->commandData->modelNamespace = $this->namespace . "\\" . $this->commandData->modelName;
 
-        $templateData = $this->commandData->templatesHelper->getTemplate("Repository", "Common");
+        $moduleTemplate = new TemplatesHelper();
+        $templateData = $moduleTemplate->getTemplate("Repository", "Module");
+        //$templateData = $this->commandData->templatesHelper->getTemplate("Repository", "Common");
 
         $templateData = $this->fillTemplate($templateData);
 

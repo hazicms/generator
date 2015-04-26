@@ -26,7 +26,7 @@ class $MODEL_NAME$Controller extends AppBaseController
 	 */
 	public function index()
 	{
-		$$MODEL_NAME_PLURAL_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->all();
+		$$MODEL_NAME_PLURAL_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->latest();
         // modulo::Modelo.index
 		return view('$MODULE_NAME$::$MODEL_NAME$.admin.index')->with('$MODEL_NAME_PLURAL_CAMEL$', $$MODEL_NAME_PLURAL_CAMEL$);
 	}

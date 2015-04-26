@@ -25,12 +25,13 @@ Steps to Get Started
         'Mitul\Generator\GeneratorServiceProvider',
         'Pingpong\Modules\ModulesServiceProvider',
         'Aitiba\LaravelApiGeneratorExtend\Generator\GeneratorServiceProvider',
+        'Collective\Html\HtmlServiceProvider',
 
    Also for convenience, add these facades in alias array in ```config/app.php```.
 
         'Module'=> 'Pingpong\Modules\Facades\Module',
-        'Form'  => 'Illuminate\Html\FormFacade',
-        'HTML'  => 'Illuminate\Html\HtmlFacade',
+        'Form' => 'Collective\Html\FormFacade',
+        'Html' => 'Collective\Html\HtmlFacade',
         'Flash' => 'Laracasts\Flash\Flash'
 
 4. Publish ```generator.php``` and ```modules.php```

@@ -1,4 +1,6 @@
-<?php namespace Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Module;
+<?php 
+
+namespace Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Module;
 
 use Config;
 use Illuminate\Support\Str;
@@ -11,7 +13,6 @@ use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\SchemaBuilderTex
 
 class ModuleViewGenerator implements GeneratorProvider
 {
-    /** @var  CommandData */
     private $commandData;
 
     private $path;
@@ -23,7 +24,6 @@ class ModuleViewGenerator implements GeneratorProvider
     function __construct($commandData)
     {
         $this->commandData = $commandData;
-        // $this->path = Config::get('generator.path_views', base_path('resources/views')) . '/' . $this->commandData->modelNamePluralCamel . '/';
         $particular =  base_path(Config::get('generator.tmp_modules', 'app/Modules/')).ucfirst($commandData->moduleName).'/';
         $this->path = $particular.Config::get('generator.path_views_module',base_path('resources/views')).'/'.$this->commandData->modelName . '/' ;
         $this->repoNamespace = $particular.Config::get('generator.namespace_repository_module', 'App\Libraries\Repositories');
@@ -49,18 +49,15 @@ class ModuleViewGenerator implements GeneratorProvider
 
     private function generateFields()
     {
-        // $fieldTemplate = $this->commandData->templatesHelper->getTemplate("field.blade", $this->viewsPath);
         $moduleTemplate = new TemplatesHelper();
         $fieldTemplate = $moduleTemplate->getTemplate("field.blade", $this->viewsPath);
 
         $fieldsStr = "";
 
-
         foreach($this->commandData->inputFields as $field)
         {
             $fieldType = $this->generateField($field['fieldName'], $field['fieldType'], $field['fieldTypeParams'], $field['fieldValues'], $field['fieldDefault']);
-            // $fieldType = $this->map($field['fieldType']);
-            // dd($field);
+            
             $singleFieldStr = str_replace('$FIELD_NAME_TITLE$', Str::title($field['fieldName']), $fieldTemplate);
             $singleFieldStr = str_replace('$FIELD_NAME$', $field['fieldName'], $singleFieldStr);
             $singleFieldStr = str_replace('$FIELD_TYPE$', $fieldType, $singleFieldStr);
@@ -68,7 +65,6 @@ class ModuleViewGenerator implements GeneratorProvider
             $fieldsStr .= $singleFieldStr . "\n\n";
         }
 
-        // $templateData = $this->commandData->templatesHelper->getTemplate("fields.blade", $this->viewsPath);
         $templateData = $moduleTemplate->getTemplate("fields.blade", $this->viewsPath);
 
         $templateData = str_replace('$FIELDS$', $fieldsStr, $templateData);
@@ -126,7 +122,6 @@ class ModuleViewGenerator implements GeneratorProvider
 
     private function generateIndex()
     {
-        // $templateData = $this->commandData->templatesHelper->getTemplate("index.blade", $this->viewsPath);
         $moduleTemplate = new TemplatesHelper();
         $templateData = $moduleTemplate->getTemplate("index.blade", $this->viewsPath);
 
@@ -164,7 +159,6 @@ class ModuleViewGenerator implements GeneratorProvider
 
     private function generateShow()
     {
-        // $fieldTemplate = $this->commandData->templatesHelper->getTemplate("show.blade", $this->viewsPath);
         $moduleTemplate = new TemplatesHelper();
         $fieldTemplate = $moduleTemplate->getTemplate("show.blade", $this->viewsPath);
 
@@ -178,7 +172,6 @@ class ModuleViewGenerator implements GeneratorProvider
 
     private function generateCreate()
     {
-        // $templateData = $this->commandData->templatesHelper->getTemplate("create.blade", $this->viewsPath);
         $moduleTemplate = new TemplatesHelper();
         $templateData = $moduleTemplate->getTemplate("create.blade", $this->viewsPath);
 
@@ -194,7 +187,6 @@ class ModuleViewGenerator implements GeneratorProvider
 
     private function generateEdit()
     {
-        // $templateData = $this->commandData->templatesHelper->getTemplate("edit.blade", $this->viewsPath);
         $moduleTemplate = new TemplatesHelper();
         $templateData = $moduleTemplate->getTemplate("edit.blade", $this->viewsPath);
 
@@ -222,4 +214,5 @@ class ModuleViewGenerator implements GeneratorProvider
 
         return $templateData;
     }
+    
 }

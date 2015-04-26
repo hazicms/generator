@@ -27,7 +27,8 @@
             "responsive" : true,
             "paging":   true,
             "ordering": true,
-            "info":     true
+            "info":     true,
+            "order": [[ 1, "desc" ]]
         });
     });
     </script>
@@ -69,7 +70,7 @@
                                             @foreach ($$MODEL_NAME_PLURAL_CAMEL$ as $$MODEL_NAME_CAMEL$)
                                                 <tr class="gradeA odd" role="row">
                                                     <td class="sorting_1">{{$$MODEL_NAME_CAMEL$->title}}</td>
-                                                    <td class="center">{{$$MODEL_NAME_CAMEL$->created_at->format('Y-m-d')}}</td>
+                                                    <td class="center">{{$$MODEL_NAME_CAMEL$->updated_at->format('Y-m-d')}}</td>
                                                     <td class="center">
                                                         <a href="{{route('$MODEL_NAME_PLURAL_CAMEL$.show', $$MODEL_NAME_CAMEL$->id)}}" title="Show" alt="Show">
                                                             <i class='fa fa-eye' style="color:black;;margin-right:5px"></i>
