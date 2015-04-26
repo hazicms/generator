@@ -1,9 +1,9 @@
 {
     "name": "aitiba/laravelapigeneratorextend",
     "description": "Laravel Module Generator.",
-    "keywords": ["laravel", "api", "model", "migration","scaffold", "CRUD",  "generator"],
+    "keywords": ["laravel", "api", "model", "migration","scaffold", "CRUD", "generator", "CMS"],
     "homepage": "https://github.com/aitiba/laravelapigeneratorextend",
-    "license": "GPL v2",
+    "license": "GPL-3.0",
     "authors": [
         {
             "name": "Aitor Ibañez",
