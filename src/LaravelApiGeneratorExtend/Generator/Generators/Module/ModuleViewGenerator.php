@@ -128,23 +128,33 @@ class ModuleViewGenerator implements GeneratorProvider
         $templateData = $this->fillTemplate($templateData);
 
         $fileName = "index.blade.php";
-
         $headerFields = "";
+        $counter = 0;
+        $columns = [];
 
-        foreach($this->commandData->inputFields as $field)
-        {
-            $headerFields .= "<th>" . Str::title($field['fieldName']) . "</th>\n\t\t\t";
+        // $allowedColumns = ['title', 'group'];
+        $allowedColumns = Config::get('generator.allowedColumns', ['title', 'group']);
+
+        foreach($this->commandData->inputFields as $field) {
+            if (in_array($field['fieldName'], $allowedColumns) and $counter <= 3) {
+                $columns[] = $field['fieldName'];
+                $counter++;
+
+                $headerFields .= "<th class='sorting_asc' tabindex='0' aria-controls='dataTables-example' rowspan='1' colspan='1' aria-sort='ascending' aria-label='Rendering engine: activate to sort column descending' style='width: 171px;'>" . Str::title($field['fieldName']) . "</th>\n\t\t\t";
+            }
         }
 
         $headerFields = trim($headerFields);
+        // dd($headerFields);
 
+        $templateData = str_replace('$UPDATE_AT_FIELD_POSITION$', $counter++, $templateData);
         $templateData = str_replace('$FIELD_HEADERS$', $headerFields, $templateData);
 
         $tableBodyFields = "";
 
-        foreach($this->commandData->inputFields as $field)
-        {
-            $tableBodyFields .= "<td>{!! $" . $this->commandData->modelNameCamel . "->" . $field['fieldName'] . " !!}</td>\n\t\t\t\t\t";
+        // foreach($this->commandData->inputFields as $field)
+        foreach($columns as $column) {
+            $tableBodyFields .= "<td>{!! $" . $this->commandData->modelNameCamel . "->" . $column . " !!}</td>\n\t\t\t\t\t";
         }
 
         $tableBodyFields = trim($tableBodyFields);

@@ -1,7 +1,17 @@
 <?php
 
 return [
+	/*
+	|--------------------------------------------------------------------------
+	| Config for LaravelApiGeneratorExtend
+	|--------------------------------------------------------------------------
+	|
+	| Basic configuration for LaravelApiGeneratorExtend
+	|
+	*/
 
+	// Column that are going to appear on index view.
+	'allowedColumns' => ['title', 'group'],
     /*
 	|--------------------------------------------------------------------------
 	| Path for modules
