@@ -10,6 +10,7 @@ use Aitiba\LaravelApiGeneratorExtend\Generator\Templates\TemplatesHelper;
 use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\SchemaBuilderSelectField;
 use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\SchemaBuilderFloatField;
 use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\SchemaBuilderTextField;
+use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\SchemaBuilderTextareaField;
 
 class ModuleViewGenerator implements GeneratorProvider
 {
@@ -112,6 +113,11 @@ class ModuleViewGenerator implements GeneratorProvider
                 $field = new SchemaBuilderFloatField();
                 return $field->getHtml($fieldName, 'null', 'null', $fieldTypeParams);
                 break;
+            // body:textarea,'placeholder' => 'Body content' 
+            case 'textarea':
+                $field = new SchemaBuilderTextareaField();
+                return $field->getHtml($fieldName, $fieldValues, $fieldDefault, $fieldTypeParams);
+                break;
             
             default:
                 dd("This field types doesnt exist. Create one please!"); 
@@ -144,8 +150,19 @@ class ModuleViewGenerator implements GeneratorProvider
             }
         }
 
+        if ($counter < 3) {
+            foreach($this->commandData->inputFields as $x => $field) {
+                if ($counter <= 3) {
+                    $columns[] = $field['fieldName'];
+                    $headerFields .= "<th class='sorting_asc' tabindex='0' aria-controls='dataTables-example' rowspan='1' colspan='1' aria-sort='ascending' aria-label='Rendering engine: activate to sort column descending' style='width: 171px;'>" . Str::title($field['fieldName']) . "</th>\n\t\t\t";
+
+                    $counter++;
+                }
+            }
+        }
+
         $headerFields = trim($headerFields);
-        // dd($headerFields);
+        // dd($columns);
 
         $templateData = str_replace('$UPDATE_AT_FIELD_POSITION$', $counter++, $templateData);
         $templateData = str_replace('$FIELD_HEADERS$', $headerFields, $templateData);
