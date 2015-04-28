@@ -60,5 +60,6 @@ Steps to Get Started
         Select: group:select,'id' => 'mySelect', 'class' => 'red':['admin' => 'admin','user' => 'user']:user
         Text: title:text,'size' => 255
         Float: price:float,'min' => 1, 'max' => 10
+        Textarea: body:textarea,'placeholder' => 'Body content' (make ```bower install``` inside Laravelapigeneratorextend folder)
 
 9. And you are ready to go. :)

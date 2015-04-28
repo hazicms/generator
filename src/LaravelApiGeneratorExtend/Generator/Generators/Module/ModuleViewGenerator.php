@@ -113,7 +113,7 @@ class ModuleViewGenerator implements GeneratorProvider
                 $field = new SchemaBuilderFloatField();
                 return $field->getHtml($fieldName, 'null', 'null', $fieldTypeParams);
                 break;
-            // body:textarea,'placeholder' => 'Body content' 
+            // body:textarea,'placeholder' => 'Body content'
             case 'textarea':
                 $field = new SchemaBuilderTextareaField();
                 return $field->getHtml($fieldName, $fieldValues, $fieldDefault, $fieldTypeParams);
