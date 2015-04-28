@@ -15,8 +15,7 @@ class SchemaBuilderTextareaField extends FieldHelper implements Field {
 	 * @return string
 	 */
 	public function getHtml($name, $value = null, $default = null, array $attr = null) {
-		$attr['class'] = "form-control";
-	
+		$attr['class'] = "ckeditor";
 		$format = "{!! Form::textarea('%s', null, %s) !!}";
 		return sprintf($format, $name, FieldHelper::arrayToString($attr));
 	}

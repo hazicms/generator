@@ -1,0 +1,8 @@
+{
+  "name": "laravelapigeneratorextend-bower",
+  "version": "0.0.1",
+  "description": "Laravel Api Generator extend",
+  "dependencies": {
+    "ckeditor": "~4.4.7"
+  }
+}

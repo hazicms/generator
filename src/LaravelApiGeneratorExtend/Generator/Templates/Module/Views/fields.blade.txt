@@ -1,3 +1,8 @@
+@section('js')
+	<script src="/../theme/ckeditor/ckeditor.js"></script>
+    <script src="/../theme/ckeditor/config.js"></script>
+    <script src="/../theme/ckeditor/styles.js"></script>
+@stop
 <div class="container">
     @if (isset($status))
     	{!! Form::model($$MODEL_NAME_CAMEL$, ['route' => ['admin.$MODEL_NAME_PLURAL_CAMEL$.update', $$MODEL_NAME_CAMEL$->id], 'method' => 'put']) !!}
