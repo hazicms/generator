@@ -24,6 +24,7 @@ Steps to Get Started
         'Laracasts\Flash\FlashServiceProvider',
         'Mitul\Generator\GeneratorServiceProvider',
         'Pingpong\Modules\ModulesServiceProvider',
+        'Pingpong\Modules\Providers\BootstrapServiceProvider',
         'Aitiba\LaravelApiGeneratorExtend\Generator\GeneratorServiceProvider',
         'Collective\Html\HtmlServiceProvider',
 
