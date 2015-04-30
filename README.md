@@ -16,8 +16,6 @@ Steps to Get Started
         composer update
     
 3. Add the ServiceProviders to the providers array in ```config/app.php```.<br>
-   As we are using these two packages [illuminate/html](https://github.com/illuminate/html) & [laracasts/flash](https://github.com/laracasts/flash) as a dependency.<br>
-   so we need to add those ServiceProviders as well.
 
         'Illuminate\View\ViewServiceProvider',
         'Illuminate\Html\HtmlServiceProvider',
@@ -27,19 +25,23 @@ Steps to Get Started
         'Pingpong\Modules\Providers\BootstrapServiceProvider',
         'Aitiba\LaravelApiGeneratorExtend\Generator\GeneratorServiceProvider',
         'Collective\Html\HtmlServiceProvider',
+        'Intervention\Image\ImageServiceProvider',
 
    Also for convenience, add these facades in alias array in ```config/app.php```.
 
         'Module'=> 'Pingpong\Modules\Facades\Module',
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
-        'Flash' => 'Laracasts\Flash\Flash'
+        'Flash' => 'Laracasts\Flash\Flash',
+        'Image' => 'Intervention\Image\Facades\Image'
 
 4. Publish ```generator.php``` and ```modules.php```
 
         php artisan vendor:publish --provider="Aitiba\LaravelApiGeneratorExtend\Generator\GeneratorServiceProvider"
 
         php artisan vendor:publish
+
+         php artisan vendor:publish --provider="Intervention\Image\ImageServiceProviderLaravel5"
 
 5. Modify ```modules.php``` file to your needs.On Cms, change 'namespace' => 'Cms\Modules', and 'modules' => app_path('Modules').
 
