@@ -45,7 +45,11 @@ Steps to Get Started
 
 6. Modify ```generator.php``` file to your needs.
 
-7. Fire artisan command to generate module with model.
+7. Add ADMIN-LTE dashboard template: cd public/ && bower update
+
+8. Add bower dependencies (at least CKEditor):  cd vendor/aitiba/laravelapigeneratorextend/ && bower update
+
+9. Fire artisan command to generate module with model.
 
         php artisan mitul.generator:module_model ModuleName ModelName
         
@@ -54,7 +58,7 @@ Steps to Get Started
         php artisan mitul.generator:module_model Network Project
         php artisan mitul.generator:module_model Blog Post
  
-8. Enter the fields with options<br>
+11. Enter the fields with options<br>
 
     Examples:
         
@@ -63,4 +67,4 @@ Steps to Get Started
         Float: price:float,'min' => 1, 'max' => 10
         Textarea: body:textarea,'placeholder' => 'Body content' (make ```bower install``` inside Laravelapigeneratorextend folder)
 
-9. And you are ready to go. :)
+12. And you are ready to go. :)
