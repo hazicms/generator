@@ -70,3 +70,16 @@ Steps to Get Started
         Textarea: body:textarea,'placeholder' => 'Body content' (make ```bower install``` inside Laravelapigeneratorextend folder)
 
 12. And you are ready to go. :)
+
+
+Use ROXY fileman[0] as a filebrowser for CKEditor
+----------------------------------------------
+
+Add on: /public/theme/ckeditor/config.js
+
+var roxyFileman = '/fileman/index.html';
+config.filebrowserBrowseUrl = roxyFileman;
+config.filebrowserImageBrowseUrl = roxyFileman+'?type=image';
+config.removeDialogTabs = 'link:upload;image:upload';
+
+[0] http://www.roxyfileman.com/CKEditor-file-browser
