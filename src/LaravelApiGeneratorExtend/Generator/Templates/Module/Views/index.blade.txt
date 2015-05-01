@@ -20,7 +20,7 @@
 
 @section('js')
     <script src="/theme/datatables/media/js/jquery.dataTables.min.js"></script>
-    <script src="/theme/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+    <script src="https://raw.githubusercontent.com/DataTables/Plugins/master/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
     <script>
     $(document).ready(function() {
         $('#table1').dataTable({
