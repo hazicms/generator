@@ -11,6 +11,7 @@ use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\SchemaBuilderSel
 use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\SchemaBuilderFloatField;
 use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\SchemaBuilderTextField;
 use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\SchemaBuilderTextareaField;
+use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\SchemaBuilderRadioField;
 
 class ModuleViewGenerator implements GeneratorProvider
 {
@@ -113,10 +114,11 @@ class ModuleViewGenerator implements GeneratorProvider
                 $field = new SchemaBuilderFloatField();
                 return $field->getHtml($fieldName, 'null', 'null', $fieldTypeParams);
                 break;
-            // body:textarea,'placeholder' => 'Body content'
-            case 'textarea':
-                $field = new SchemaBuilderTextareaField();
-                return $field->getHtml($fieldName, $fieldValues, $fieldDefault, $fieldTypeParams);
+
+            // sex:radio,'id' => 'sex', 'class' => 'red':['male' => 'ale','female' => 'fem']:fem
+            case 'radio':
+                $field = new SchemaBuilderRadioField($this->commandData);
+                return $field->getHtml($fieldName, $fieldValues, 'null', $fieldTypeParams);
                 break;
             
             default:
