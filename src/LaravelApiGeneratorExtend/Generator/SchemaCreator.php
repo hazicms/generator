@@ -51,7 +51,9 @@ class SchemaCreator
     	$array = ['textarea' => 'text',
     			 'text' => 'string',
     			 'select' => 'enum',
-    			 'radio' => 'text'];
+    			 'radio' => 'text',
+    			 'check' => 'text',
+    			 'number' => 'integer'];
 
         if (!array_key_exists($fieldType, $array)) return $fieldType;
 
