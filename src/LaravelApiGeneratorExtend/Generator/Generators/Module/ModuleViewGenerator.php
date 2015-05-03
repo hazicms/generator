@@ -14,6 +14,7 @@ use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\SchemaBuilderTex
 use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\SchemaBuilderRadioField;
 use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\SchemaBuilderCheckField;
 use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\SchemaBuilderNumberField;
+use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\SchemaBuilderDateField;
 
 class ModuleViewGenerator implements GeneratorProvider
 {
@@ -117,6 +118,12 @@ class ModuleViewGenerator implements GeneratorProvider
                 return $field->getHtml($fieldName, 'null', 'null', $fieldTypeParams);
                 break;
 
+            // body:textarea,'placeholder' => 'Body content'
+            case 'textarea':
+                $field = new SchemaBuilderTextareaField();
+                return $field->getHtml($fieldName, 'null', 'null', $fieldTypeParams);
+                break;
+
             // sex:radio,'id' => 'sex', 'class' => 'red':['male' => 'ale','female' => 'fem']:fem
             case 'radio':
                 $field = new SchemaBuilderRadioField($this->commandData);
@@ -132,6 +139,12 @@ class ModuleViewGenerator implements GeneratorProvider
             // assistance:number,'id' => 'assistance', 'class' => 'red'
             case 'number':
                 $field = new SchemaBuilderNumberField();
+                return $field->getHtml($fieldName, 'null', 'null', $fieldTypeParams);
+                break;
+
+            // birthday:date,'id' => 'date', 'class' => 'red'
+            case 'date':
+                $field = new SchemaBuilderDateField();
                 return $field->getHtml($fieldName, 'null', 'null', $fieldTypeParams);
                 break;
             

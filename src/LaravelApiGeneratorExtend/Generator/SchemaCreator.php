@@ -53,7 +53,8 @@ class SchemaCreator
     			 'select' => 'enum',
     			 'radio' => 'text',
     			 'check' => 'text',
-    			 'number' => 'integer'];
+    			 'number' => 'integer',
+    			 'date' => 'datetime'];
 
         if (!array_key_exists($fieldType, $array)) return $fieldType;
 

@@ -68,6 +68,11 @@ Steps to Get Started
         Text: title:text,'size' => 255
         Float: price:float,'min' => 1, 'max' => 10
         Textarea: body:textarea,'placeholder' => 'Body content' (make ```bower install``` inside Laravelapigeneratorextend folder)
+        Radiobutton: sex:radio,'id' => 'sex', 'class' => 'red':['male' => 'ale','female' => 'fem']:fem
+        Checkbutton: working on it...
+        Number: assistance:number,'id' => 'assistance', 'class' => 'red'
+        Date: birthday:date,'id' => 'date', 'class' => 'red' (make ```bower install``` inside Laravelapigeneratorextend folder)
+
 
 12. And you are ready to go. :)
 
@@ -77,9 +82,9 @@ Use ROXY fileman[0] as a filebrowser for CKEditor
 
 Add on: /public/theme/ckeditor/config.js
 
-var roxyFileman = '/fileman/index.html';
-config.filebrowserBrowseUrl = roxyFileman;
-config.filebrowserImageBrowseUrl = roxyFileman+'?type=image';
-config.removeDialogTabs = 'link:upload;image:upload';
+        var roxyFileman = '/fileman/index.html';
+        config.filebrowserBrowseUrl = roxyFileman;
+        config.filebrowserImageBrowseUrl = roxyFileman+'?type=image';
+        config.removeDialogTabs = 'link:upload;image:upload';
 
 [0] http://www.roxyfileman.com/CKEditor-file-browser
