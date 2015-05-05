@@ -24,8 +24,24 @@ class SchemaBuilderCheckField extends FieldHelper implements Field {
 
 		foreach($value as $v) {
 
-			$format .= "{!! Form::label('".$v."[]', '".ucfirst($v)."') !!}
-			{!! Form::checkbox('".$name."', '".$v."') !!}";
+			// $format .= "{!! Form::label('".$v."[]', '".ucfirst($v)."') !!}
+			// {!! Form::checkbox('".$name."', '".$v."') !!}";
+
+
+
+			$format .= "<?php \$checked = ''; ?>
+		    	{!! Form::label('".$v."[]', '".ucfirst($v)."') !!}
+		    	@if (isset(\$project) && is_array(\$project['".$name."'])) 
+		    		@if (in_array('".$v."', \$project['".$name."']))
+						<?php \$checked = 'checked=\"checked\"' ?>
+					@endif
+				@elseif (isset(\$project) && is_string(\$project['".$name."']))
+					@if (\$project['".$name."'] === 'clean_the_room')
+						<?php \$checked = 'checked=\"checked\"' ?>
+					@endif
+		    	@endif
+				<input {!! \$checked !!} name='".$name."[]' type='checkbox' value='".$v."'>";
+
 		}
 				
 		return $format;

@@ -130,7 +130,7 @@ class ModuleViewGenerator implements GeneratorProvider
                 return $field->getHtml($fieldName, $fieldValues, 'null', $fieldTypeParams);
                 break;
 
-            // sex:check,'id' => 'sex', 'class' => 'red':['clean the room' => 'clean','go to your home' => 'home']:home
+            // sex:check,'id' => 'sex', 'class' => 'red':['clean_the_room' => 'clean','go_to_your_home' => 'home']:home
             case 'check':
                 $field = new SchemaBuilderCheckField($this->commandData);
                 return $field->getHtml($fieldName, $fieldValues, 'null', $fieldTypeParams);

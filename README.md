@@ -69,10 +69,11 @@ Steps to Get Started
         Float: price:float,'min' => 1, 'max' => 10
         Textarea: body:textarea,'placeholder' => 'Body content' (make ```bower install``` inside Laravelapigeneratorextend folder)
         Radiobutton: sex:radio,'id' => 'sex', 'class' => 'red':['male' => 'ale','female' => 'fem']:fem
-        Checkbutton: working on it...
+        Checkbutton: sex:check,'id' => 'sex', 'class' => 'red':['clean_the_room' => 'clean','go_to_your_home' => 'home']:home (*)
         Number: assistance:number,'id' => 'assistance', 'class' => 'red'
         Date: birthday:date,'id' => 'date', 'class' => 'red' (make ```bower install``` inside Laravelapigeneratorextend folder)
 
+(*) Need to uncomment 3 lines on the modules controller to run. Laravelcollective/form has a bug with checkboxes. Until this been solved, this trick is needed! :-(
 
 12. And you are ready to go. :)
 
