@@ -31,12 +31,12 @@ class SchemaBuilderCheckField extends FieldHelper implements Field {
 
 			$format .= "<?php \$checked = ''; ?>
 		    	{!! Form::label('".$v."[]', '".ucfirst($v)."') !!}
-		    	@if (isset(\$project) && is_array(\$project['".$name."'])) 
-		    		@if (in_array('".$v."', \$project['".$name."']))
+		    	@if (isset(\$".$this->commandData->modelNameCamel.") && is_array(\$".$this->commandData->modelNameCamel."['".$name."'])) 
+		    		@if (in_array('".$v."', \$".$this->commandData->modelNameCamel."['".$name."']))
 						<?php \$checked = 'checked=\"checked\"' ?>
 					@endif
-				@elseif (isset(\$project) && is_string(\$project['".$name."']))
-					@if (\$project['".$name."'] === 'clean_the_room')
+				@elseif (isset(\$".$this->commandData->modelNameCamel.") && is_string(\$".$this->commandData->modelNameCamel."['".$name."']))
+					@if (\$".$this->commandData->modelNameCamel."['".$name."'] === 'clean_the_room')
 						<?php \$checked = 'checked=\"checked\"' ?>
 					@endif
 		    	@endif
