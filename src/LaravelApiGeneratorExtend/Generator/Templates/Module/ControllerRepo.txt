@@ -9,8 +9,6 @@ use Flash;
 
 class $MODEL_NAME$Controller extends AppBaseController
 {
-
-	/** @var  $MODEL_NAME$Repository */
 	private $$MODEL_NAME_CAMEL$Repository;
 
 	function __construct($MODEL_NAME$Repository $$MODEL_NAME_CAMEL$Repo)
@@ -51,9 +49,6 @@ class $MODEL_NAME$Controller extends AppBaseController
 	public function store(Create$MODEL_NAME$Request $request)
 	{
         $input = $request->all();
-
-        // For checkbox field type. Change 'sex' for your field name.
-        // $input['sex'] = implode(",", $input['sex']);
 
 		$$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->store($input);
 
@@ -121,9 +116,6 @@ class $MODEL_NAME$Controller extends AppBaseController
 			Flash::error('$MODEL_NAME$ not found');
 			return redirect(route('admin.$MODEL_NAME_PLURAL_CAMEL$.index'));
 		}
-
-		// For checkbox field type. Change 'sex' for your field name.
-		// $request['sex'] = implode(",", $request->sex);
 		
 		$$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->update($$MODEL_NAME_CAMEL$, $request->all());
 

@@ -133,6 +133,12 @@ class ModuleViewGenerator implements GeneratorProvider
             // sex:check,'id' => 'sex', 'class' => 'red':['clean_the_room' => 'clean','go_to_your_home' => 'home']:home
             case 'check':
                 $field = new SchemaBuilderCheckField($this->commandData);
+               
+                // add model events to route.php module file
+                $particular =  base_path(Config::get('generator.tmp_modules', 'app/Modules/')).ucfirst($this->commandData->moduleName).'/';
+                $this->pathRoute = $particular.Config::get('generator.path_routes_module', app_path('Http/routes.php'));
+                $this->commandData->fileHelper->writeFile($this->pathRoute, $this->generateModelEvents());
+   
                 return $field->getHtml($fieldName, $fieldValues, 'null', $fieldTypeParams);
                 break;
 
@@ -154,6 +160,12 @@ class ModuleViewGenerator implements GeneratorProvider
         }
 
     }
+
+     private function generateModelEvents()
+    {
+        return "<?php\n\nuse Cms\Modules\\".$this->commandData->moduleName."\Entities\\".$this->commandData->modelName.";\n\n".$this->commandData->modelName."::saving(function(\$request) {\n\t\t\$request['sex'] = implode(',', \$request['sex']);\n\n});";
+    }
+
 
     private function generateIndex()
     {
