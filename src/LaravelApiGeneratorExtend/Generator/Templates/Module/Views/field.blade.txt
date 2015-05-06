@@ -5,10 +5,10 @@
 		    	$FIELD_TYPE$
 		    </div>
 
-		    @if($errors->first('$FIELD_NAME$'))
+		    <!-- @if($errors->first('$FIELD_NAME$'))
 		       	<div class="alert alert-danger alert-dismissable">
 		           	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 		            <h4><i class="icon fa fa-ban"></i> {{$errors->first('$FIELD_NAME$')}}</h4>
 		        </div>
-		    @endif
+		    @endif -->
 		</div>

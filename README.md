@@ -73,7 +73,7 @@ Steps to Get Started
         Number: assistance:number,'id' => 'assistance', 'class' => 'red'
         Date: birthday:date,'id' => 'date', 'class' => 'red' (make ```bower install``` inside Laravelapigeneratorextend folder)
 
-(*) Need to uncomment 1 lines on the modules controller to run: line 91, change the field name to our needs on that line and on Module/Model routes.php modify two times this data for saving model binding. Laravelcollective/form has a bug with checkboxes. Until this been solved, this trick is needed! :-(
+(*) Need to uncomment 3 lines on the modules controller to run. Laravelcollective/form has a bug with checkboxes. Until this been solved, this trick is needed! :-(
 
 12. And you are ready to go. :)
 

@@ -100,6 +100,7 @@ class ModuleModelGenerator implements GeneratorProvider
         {
             if(!empty($field['validations']))
             {
+                // $rule = '"' . $field['fieldName'] . '" => "' . $field['validations'] . '"';
                 $rule = '"' . $field['fieldName'] . '" => "' . $field['validations'] . '"';
                 $rules[] = $rule;
             }
