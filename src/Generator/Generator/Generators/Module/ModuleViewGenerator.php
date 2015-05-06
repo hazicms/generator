@@ -6,15 +6,15 @@ use Config;
 use Illuminate\Support\Str;
 use Mitul\Generator\CommandData;
 use Mitul\Generator\Generators\GeneratorProvider;
-use Aitiba\LaravelApiGeneratorExtend\Generator\Templates\TemplatesHelper;
-use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\SchemaBuilderSelectField;
-use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\SchemaBuilderFloatField;
-use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\SchemaBuilderTextField;
-use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\SchemaBuilderTextareaField;
-use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\SchemaBuilderRadioField;
-use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\SchemaBuilderCheckField;
-use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\SchemaBuilderNumberField;
-use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\SchemaBuilderDateField;
+use HaziCms\Generator\Generator\Templates\TemplatesHelper;
+use HaziCms\Generator\Generator\Generators\Field\SchemaBuilderSelectField;
+use HaziCms\Generator\Generator\Generators\Field\SchemaBuilderFloatField;
+use HaziCms\Generator\Generator\Generators\Field\SchemaBuilderTextField;
+use HaziCms\Generator\Generator\Generators\Field\SchemaBuilderTextareaField;
+use HaziCms\Generator\Generator\Generators\Field\SchemaBuilderRadioField;
+use HaziCms\Generator\Generator\Generators\Field\SchemaBuilderCheckField;
+use HaziCms\Generator\Generator\Generators\Field\SchemaBuilderNumberField;
+use HaziCms\Generator\Generator\Generators\Field\SchemaBuilderDateField;
 
 class ModuleViewGenerator implements GeneratorProvider
 {

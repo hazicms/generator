@@ -59,7 +59,7 @@ class ModuleModelGeneratorCommand extends Command
         $this->commandData->moduleName = $this->argument('module');
         // dd($this->commandData->moduleName);
         $this->commandData->modelName = $this->argument('model');
-        $fileHelper = new \Aitiba\LaravelApiGeneratorExtend\Generator\File\FileHelper();
+        $fileHelper = new \HaziCms\Generator\Generator\File\FileHelper();
         // dd($fileHelper->moduleExists($name));
         if (! $fileHelper->moduleExists($this->commandData->moduleName)) {
             $fileHelper->makeModuleStructure($this->commandData->moduleName);

@@ -1,4 +1,4 @@
-<?php namespace Aitiba\LaravelApiGeneratorExtend\Generator;
+<?php namespace HaziCms\Generator\Generator;
 
 
 use Config;
