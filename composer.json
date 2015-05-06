@@ -1,8 +1,8 @@
 {
     "name": "hazicms/generator",
-    "description": "Laravel Module Generator.",
+    "description": "Generator for HaziCms.",
     "keywords": ["laravel", "api", "model", "migration","scaffold", "CRUD", "generator", "CMS"],
-    "homepage": "https://github.com/aitiba/laravelapigeneratorextend",
+    "homepage": "https://github.com/hazicms/generator",
     "license": "GPL-3.0",
     "authors": [
         {
@@ -14,8 +14,8 @@
     ],
     "require": {
         "php": ">=5.4.0",
-	   "pingpong/modules": "2.0.*@dev",
-	   "mitulgolakiya/laravel-api-generator": "1.2.*",
+	"pingpong/modules": "2.0.*@dev",
+	"mitulgolakiya/laravel-api-generator": "1.2.*",
         "laravelcollective/html": "~5.0",
         "intervention/image": "~2.2"
     },

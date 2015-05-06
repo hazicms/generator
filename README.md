@@ -8,7 +8,7 @@ Steps to Get Started
         "require": {
             "pingpong/generators": "2.0.*@dev",
             "pingpong/modules": "2.0.x-dev",
-            "aitiba/laravelapigeneratorextend": "dev-master"
+            "hazicms/generator": "dev-master"
         }
   
 2. Run composer update
@@ -23,7 +23,7 @@ Steps to Get Started
         'Mitul\Generator\GeneratorServiceProvider',
         'Pingpong\Modules\ModulesServiceProvider',
         'Pingpong\Modules\Providers\BootstrapServiceProvider',
-        'Aitiba\LaravelApiGeneratorExtend\Generator\GeneratorServiceProvider',
+        'HaziCms\Generator\Generator\GeneratorServiceProvider',
         'Collective\Html\HtmlServiceProvider',
         'Intervention\Image\ImageServiceProvider',
 
@@ -37,7 +37,7 @@ Steps to Get Started
 
 4. Publish ```generator.php``` and ```modules.php```
 
-        php artisan vendor:publish --provider="Aitiba\LaravelApiGeneratorExtend\Generator\GeneratorServiceProvider"
+        php artisan vendor:publish --provider="HaziCms\Generator\Generator\GeneratorServiceProvider"
 
         php artisan vendor:publish
 
@@ -49,7 +49,7 @@ Steps to Get Started
 
 7. Add ADMIN-LTE dashboard template: cd public/ && bower update
 
-8. Add bower dependencies (at least CKEditor):  cd vendor/aitiba/laravelapigeneratorextend/ && bower update
+8. Add bower dependencies (at least CKEditor):  cd vendor/hazicms/generator/ && bower update
 
 9. Fire artisan command to generate module with model.
 
