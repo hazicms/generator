@@ -1,5 +1,8 @@
 <?php namespace Aitiba\LaravelApiGeneratorExtend\Generator;
 
+
+use Config;
+
 class SchemaCreator
 {
 	public static function createField($field)
@@ -47,14 +50,7 @@ class SchemaCreator
 
 	public static function map($fieldType)
     {
-    	//TODO: move to generator.generator_fields_map config
-    	$array = ['textarea' => 'text',
-    			 'text' => 'string',
-    			 'select' => 'enum',
-    			 'radio' => 'text',
-    			 'check' => 'text',
-    			 'number' => 'integer',
-    			 'date' => 'datetime'];
+    	$array = Config::get('generator.field_map');
 
         if (!array_key_exists($fieldType, $array)) return $fieldType;
 

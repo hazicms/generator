@@ -87,9 +87,8 @@ class ModuleViewGenerator implements GeneratorProvider
 
     private function map($fieldType)
     {
-        $array = ['float' => 'double'];
-
-        //TODO: move to generator.generator_views_map config
+        $array = Config::get('generator.view_map');
+        
         if (!array_key_exists($fieldType, $array)) return $fieldType;
 
         return $array[$fieldType];

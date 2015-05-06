@@ -12,6 +12,7 @@ return [
 
 	// Column that are going to appear on index view.
 	'allowedColumns' => ['title', 'group'],
+
     /*
 	|--------------------------------------------------------------------------
 	| Path for modules
@@ -85,7 +86,27 @@ return [
 
 	'path_routes' => app_path('Http/routes.php'),
 
+	/*
+	|--------------------------------------------------------------------------
+	| Config for fields
+	|--------------------------------------------------------------------------
+	|
+	*/
 
+	'field_map' => [
+		'textarea' => 'text',
+    	'text' => 'string',
+    	'select' => 'enum',
+    	'radio' => 'text',
+    	'check' => 'text',
+    	'number' => 'integer',
+    	'date' => 'datetime'
+    ],
+
+    'view_map' => [
+    	'float' => 'double'
+    ],
+	
 	/*
 	|--------------------------------------------------------------------------
 	| Namespace for classes
