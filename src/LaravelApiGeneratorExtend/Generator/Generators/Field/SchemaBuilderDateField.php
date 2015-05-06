@@ -1,6 +1,6 @@
-<?php namespace Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field;
+<?php namespace HaziCms\Generator\Generator\Generators\Field;
 
-use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field\Field;
+use HaziCms\Generator\Generator\Generators\Field\Field;
 
 class SchemaBuilderDateField extends FieldHelper implements Field {
 

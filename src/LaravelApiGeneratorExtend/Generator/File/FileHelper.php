@@ -1,4 +1,4 @@
-<?php namespace Aitiba\LaravelApiGeneratorExtend\Generator\File;
+<?php namespace HaziCms\Generator\Generator\File;
 
 use \File;
 use \Artisan;

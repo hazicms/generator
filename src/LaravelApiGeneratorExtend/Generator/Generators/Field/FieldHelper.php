@@ -1,5 +1,5 @@
 <?php 
-namespace Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field;
+namespace HaziCms\Generator\Generator\Generators\Field;
 
 abstract class FieldHelper
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Module;
+namespace HaziCms\Generator\Generator\Generators\Module;
 
 use Config;
 use Mitul\Generator\CommandData;
 use Mitul\Generator\Generators\GeneratorProvider;
-use Aitiba\LaravelApiGeneratorExtend\Generator\Templates\TemplatesHelper;
+use HaziCms\Generator\Generator\Templates\TemplatesHelper;
 
 class ModuleRepositoryGenerator implements GeneratorProvider
 {

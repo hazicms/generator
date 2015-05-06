@@ -1,6 +1,6 @@
 <?php 
 
-namespace Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Module;
+namespace HaziCms\Generator\Generator\Generators\Module;
 
 use Config;
 use Illuminate\Support\Str;

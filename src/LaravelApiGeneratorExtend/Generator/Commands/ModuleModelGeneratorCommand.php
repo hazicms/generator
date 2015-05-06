@@ -1,15 +1,15 @@
-<?php namespace Aitiba\LaravelApiGeneratorExtend\Generator\Commands;
+<?php namespace HaziCms\Generator\Generator\Commands;
 
 use Illuminate\Console\Command;
-use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Utils\CommandData;
-use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Module\ModuleMigrationGenerator;
-use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Module\ModuleModelGenerator;
-use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Module\ModuleRepositoryGenerator;
-use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Module\ModuleRequestGenerator;
-use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Module\ModuleRoutesGenerator;
-use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Module\ModuleRepoViewControllerGenerator;
-use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Module\ModuleViewControllerGenerator;
-use Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Module\ModuleViewGenerator;
+use HaziCms\Generator\Generator\Generators\Utils\CommandData;
+use HaziCms\Generator\Generator\Generators\Module\ModuleMigrationGenerator;
+use HaziCms\Generator\Generator\Generators\Module\ModuleModelGenerator;
+use HaziCms\Generator\Generator\Generators\Module\ModuleRepositoryGenerator;
+use HaziCms\Generator\Generator\Generators\Module\ModuleRequestGenerator;
+use HaziCms\Generator\Generator\Generators\Module\ModuleRoutesGenerator;
+use HaziCms\Generator\Generator\Generators\Module\ModuleRepoViewControllerGenerator;
+use HaziCms\Generator\Generator\Generators\Module\ModuleViewControllerGenerator;
+use HaziCms\Generator\Generator\Generators\Module\ModuleViewGenerator;
 use Symfony\Component\Console\Input\InputArgument;
 use \Config;
 use \File;

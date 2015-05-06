@@ -1,4 +1,4 @@
-<?php namespace Aitiba\LaravelApiGeneratorExtend\Generator\Generators;
+<?php namespace HaziCms\Generator\Generator\Generators;
 
 interface GeneratorProvider
 {

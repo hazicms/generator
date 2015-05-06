@@ -1,4 +1,4 @@
-<?php namespace Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Field;
+<?php namespace HaziCms\Generator\Generator\Generators\Field;
 
 interface Field {
 	/**

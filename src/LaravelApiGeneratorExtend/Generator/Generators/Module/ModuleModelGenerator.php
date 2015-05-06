@@ -1,4 +1,4 @@
-<?php namespace Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Module;
+<?php namespace HaziCms\Generator\Generator\Generators\Module;
 
 use Config;
 use Mitul\Generator\CommandData;

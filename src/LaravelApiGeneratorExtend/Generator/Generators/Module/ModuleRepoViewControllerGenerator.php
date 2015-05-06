@@ -1,8 +1,8 @@
-<?php namespace Aitiba\LaravelApiGeneratorExtend\Generator\Generators\Module;
+<?php namespace HaziCms\Generator\Generator\Generators\Module;
 
 use Config;
 use Mitul\Generator\CommandData;
-use Aitiba\LaravelApiGeneratorExtend\Generator\Templates\TemplatesHelper;
+use HaziCms\Generator\Generator\Templates\TemplatesHelper;
 use Mitul\Generator\Generators\GeneratorProvider;
 
 class ModuleRepoViewControllerGenerator implements GeneratorProvider

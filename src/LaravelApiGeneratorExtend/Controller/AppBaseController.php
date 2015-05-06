@@ -1,6 +1,6 @@
-<?php namespace Aitiba\LaravelApiGeneratorExtend\Controller;
+<?php namespace HaziCms\Generator\Controller;
 
-use Cms\Http\Controllers\Controller;
+use HaziCms\Http\Controllers\Controller;
 use Mitul\Generator\Exceptions\AppValidationException;
 
 class AppBaseController extends Controller
