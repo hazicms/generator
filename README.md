@@ -35,21 +35,21 @@ Steps to Get Started
         'Flash' => 'Laracasts\Flash\Flash',
         'Image' => 'Intervention\Image\Facades\Image'
 
-4. Publish ```generator.php``` and ```modules.php```
+4. Publish config files for generators, modules and images:
 
         php artisan vendor:publish --provider="HaziCms\Generator\Generator\GeneratorServiceProvider"
 
         php artisan vendor:publish
 
-         php artisan vendor:publish --provider="Intervention\Image\ImageServiceProviderLaravel5"
+        php artisan vendor:publish --provider="Intervention\Image\ImageServiceProviderLaravel5"
 
-5. Modify ```modules.php``` file to your needs.On Cms, change 'namespace' => 'Cms\Modules', and 'modules' => app_path('Modules').
+5. Modify ```modules.php``` file to your needs.On Cms, change 'namespace' => 'HaziCms\Modules', and 'modules' => app_path('Modules').
 
 6. Modify ```generator.php``` file to your needs.
 
-7. Add ADMIN-LTE dashboard template: cd public/ && bower update
+7. Add ADMIN-LTE dashboard template: cd public && bower update && cd ..
 
-8. Add bower dependencies (at least CKEditor):  cd vendor/hazicms/generator/ && bower update
+8. Add bower dependencies (at least CKEditor):  cd vendor/hazicms/generator/ && bower update && cd ..
 
 9. Fire artisan command to generate module with model.
 
