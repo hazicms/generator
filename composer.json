@@ -26,8 +26,11 @@
         }
     },
     "scripts": {
-        "post-package-install": [
-            "php artisan vendor:publish --provider='HaziCms\\Generator\\Generator\\GeneratorServiceProvider'"
+	 "post-install-cmd": [
+            "php artisan vendor:publish --provider='HaziCms\\Generator\\Generator\\GeneratorServiceProvider' --force"
+        ],
+        "post-update-cmd": [
+            "php artisan vendor:publish --provider='HaziCms\\Generator\\Generator\\GeneratorServiceProvider' --force"
         ]
     }
 }
