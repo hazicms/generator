@@ -17,8 +17,6 @@ Steps to Get Started
     
 3. Add the ServiceProviders to the providers array in ```config/app.php```.<br>
 
-        'Illuminate\View\ViewServiceProvider',
-        'Illuminate\Html\HtmlServiceProvider',
         'Laracasts\Flash\FlashServiceProvider',
         'Mitul\Generator\GeneratorServiceProvider',
         'Pingpong\Modules\ModulesServiceProvider',
