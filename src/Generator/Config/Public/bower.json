@@ -1,0 +1,8 @@
+{
+  "name": "blog",
+  "version": "0.0.1",
+  "description": "Gestor de blogs",
+  "dependencies": {
+    "admin-lte": "~2.0.5"
+  }
+}
