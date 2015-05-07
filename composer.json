@@ -27,9 +27,11 @@
     },
     "scripts": {
         "post-install-cmd": [
+            "echo install",
             "php artisan vendor:publish --provider='hazicms/generator'"
         ],
         "post-update-cmd": [
+            echo "update",
             "php artisan vendor:publish --provider='hazicms/generator'"
         ]
     }
