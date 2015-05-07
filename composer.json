@@ -26,7 +26,7 @@
         }
     },
     "scripts": {
-        "post-install-cmd": [
+        "post-update-cmd": [
             "php artisan vendor:publish --provider='HaziCms\\Generator\\Generator\\GeneratorServiceProvider'"
         ]
     }
