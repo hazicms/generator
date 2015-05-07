@@ -28,5 +28,5 @@
         "post-install-cmd": [
             "php artisan vendor:publish --provider='HaziCms\\Generator\\Generator\\GeneratorServiceProvider'"
         ]
-    },
+    }
 }
