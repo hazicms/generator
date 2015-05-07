@@ -24,5 +24,13 @@
         "psr-4": {
             "HaziCms\\": "src"
         }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "php artisan vendor:publish --provider='hazicms/generator'"
+        ],
+        "post-update-cmd": [
+            "php artisan vendor:publish --provider='HaziCms\\Generator\\Generator\\GeneratorServiceProvider' --force"
+        ]
     }
 }
