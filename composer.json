@@ -26,7 +26,12 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "php artisan vendor:publish --provider='HaziCms\\Generator\\Generator\\GeneratorServiceProvider'"
+            "php artisan vendor:publish --provider='HaziCms\\Generator\\Generator\\GeneratorServiceProvider'",
+            "php artisan vendor:publish",
+            "php artisan vendor:publish --provider='Intervention\\Image\\ImageServiceProviderLaravel5'",
+            "cd public && bower update && cd ..",
+            "cd vendor/hazicms/generator/ && bower update && cd .."
+
         ]
     }
 }
