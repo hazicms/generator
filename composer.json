@@ -31,7 +31,7 @@
             "php artisan vendor:publish --provider='hazicms/generator'"
         ],
         "post-update-cmd": [
-            echo "update",
+            "echo update",
             "php artisan vendor:publish --provider='hazicms/generator'"
         ]
     }
