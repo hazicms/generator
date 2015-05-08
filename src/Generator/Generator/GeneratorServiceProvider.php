@@ -16,7 +16,7 @@ class GeneratorServiceProvider extends ServiceProvider
 		$this->publishes([$configPath => config_path('generator.php')], 'config');
 		$this->publishes([
 			__DIR__.'/../Views/Common' => base_path('resources/views'),
-			__DIR__.'/../Config/Public' => base_path('Public'),
+			__DIR__.'/../Config/Public' => base_path('public'),
 			__DIR__.'/../Config/Views' => base_path('resources/views')
 		]);
 	}
