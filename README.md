@@ -51,12 +51,12 @@ Steps to Get Started
 
 9. Fire artisan command to generate module with model.
 
-        php artisan mitul.generator:module_model ModuleName ModelName
+        php artisan hazicms:generator ModuleName ModelName
         
     e.g.
     
-        php artisan mitul.generator:module_model Network Project
-        php artisan mitul.generator:module_model Blog Post
+        php artisan hazicms:generator Network Project
+        php artisan hazicms:generator Blog Post
  
 11. Enter the fields with options<br>
 

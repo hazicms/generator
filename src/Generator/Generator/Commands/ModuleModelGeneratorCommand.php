@@ -22,14 +22,14 @@ class ModuleModelGeneratorCommand extends Command
      *
      * @var string
      */
-    protected $name = 'mitul.generator:module_model';
+    protected $name = 'hazicms:generator';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a module with a model';
+    protected $description = 'Generate a module for HaziCms';
 
     /**
      * The command Data
