@@ -1,0 +1,6 @@
+BLOG
+// user_id:select,'id' => 'mySelect', 'class' => 'red':['admin' => 'admin','user' => 'user']:user
+
+user_id:select,'id' => 'mySelect', 'class' => 'red':['admin' => 'admin','user' => 'user', 'paco' => 'paco']:user
+title:text,'size' => 255
+body:textarea,'placeholder' => 'Body content'

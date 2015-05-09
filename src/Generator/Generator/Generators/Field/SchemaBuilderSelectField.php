@@ -27,6 +27,7 @@ class SchemaBuilderSelectField extends FieldHelper implements Field {
 					{!! Form::select('%s', %s, %s, %s) !!} 
 				@endif";
 				
+				// dd(FieldHelper::arrayToString(['admin' => 'admin', 'user' => 'user']));
 		return sprintf($format, "\$status", $name, FieldHelper::arrayToString($value), "$".strtolower($this->commandData->modelName)."->".$name, FieldHelper::arrayToString($attr),
 					    $name, FieldHelper::arrayToString($value), $default, FieldHelper::arrayToString($attr));
 

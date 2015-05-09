@@ -145,11 +145,18 @@ class CommandData
 
 	private function sanitizeArrayExplode($inputs)
 	{
+			//var_dump("HASIERAN: ".$inputs. "<br>");
+			
 			$inputs = substr($inputs, 1);
-			// dd($string);
+			//var_dump("1: ".$inputs. "<br>");
+			
 			$inputs = substr($inputs, 1, strlen($inputs)-3);
-		$inputs = explode(",", $inputs);
-
+			// var_dump("2: ".$inputs. "<br>");
+			$inputs = explode(",", $inputs);
+			// echo "3: ";
+			// var_dump($inputs);
+			
+			
 		for($i = 1; $i < sizeof($inputs); $i++) {
 			// echo $inputs[$i];
 			// $inputs[$i] = trim($inputs[$i]);
@@ -162,18 +169,40 @@ class CommandData
 			//$input = explode(",", $inputs);
 			$res = [];
 			foreach ($inputs as $x => $input) {
+				// var_dump($x);
 				$in = explode("=>", $input);
-				$in[0] = trim($in[0]);
-				$in[0] = trim($in[0], "'");
-				$in[1] = trim($in[1]);
-				$in[1] = trim($in[1], "'");
+				$in[0] = ltrim($in[0], ' ');
+				$in[0] = ltrim($in[0], '\'');
+				$in[0] = rtrim($in[0], ' ');
+				$in[0] = rtrim($in[0], '\'');
+
+				$in[1] = ltrim($in[1], ' ');
+				$in[1] = ltrim($in[1], '\'');
+				$in[1] = rtrim($in[1], ' ');
+				$in[1] = rtrim($in[1], '\'');
+				// echo substr($in[0], 0, 1);
+				// if (substr($in[0], 1, 1)  == '\'') {
+				// 	$in[0] = substr($in[0], 1);
+				// }
+				//var_dump($in);
+				// $in[0] = trim($in[0]);
+				// $in[1] = trim($in[1], "'");
+				//var_dump($in[$x]);
+				// $in[1] = trim($in[1]);
+				// $in[1] = trim($in[1], "'");
 
 				// $strr = $strr[$x];
-				//var_dump($in);
-				$res[$in[0]] = $in[$x];
+				// var_dump($in[$x]);
+				$res[$in[0]] = $in[1];
 			}
 			// dd($res);
 		}
+
+		/* array:2 [
+			  "admin" => "admin"
+  			  "user" => "user"
+		] */ 
+
 		return $res;
 	}
 
