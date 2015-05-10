@@ -11,6 +11,12 @@ class $MODEL_NAME$Controller extends AppBaseController
 {
 	private $$MODEL_NAME_CAMEL$Repository;
 
+	/**
+     * Create a new $$MODEL_NAME_CAMEL$Repo instance.
+     *
+     * @param $commandData Mitul\Generator\CommandData
+     * 
+     */
 	function __construct($MODEL_NAME$Repository $$MODEL_NAME_CAMEL$Repo)
 	{
 		$this->$MODEL_NAME_CAMEL$Repository = $$MODEL_NAME_CAMEL$Repo;

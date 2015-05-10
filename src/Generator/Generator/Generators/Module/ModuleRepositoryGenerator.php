@@ -15,6 +15,12 @@ class ModuleRepositoryGenerator implements GeneratorProvider
 
     private $namespace;
 
+    /**
+     * Create a new modulemigrationgenerator instance.
+     *
+     * @param $commandData Mitul\Generator\CommandData
+     * 
+     */
     function __construct($commandData)
     {
         $this->commandData = $commandData;
@@ -25,14 +31,19 @@ class ModuleRepositoryGenerator implements GeneratorProvider
         $this->namespace = $particular.Config::get('generator.namespace_repository_module', 'App\Libraries\Repositories');
     }
 
+    /**
+     * Generate a new module migration file.
+     *
+     * @return null
+     * 
+     */
     function generate()
     {
         $this->commandData->modelNamespace = $this->namespace . "\\" . $this->commandData->modelName;
 
         $moduleTemplate = new TemplatesHelper();
         $templateData = $moduleTemplate->getTemplate("Repository", "Module");
-        //$templateData = $this->commandData->templatesHelper->getTemplate("Repository", "Common");
-
+       
         $templateData = $this->fillTemplate($templateData);
 
         $fileName = $this->commandData->modelName . "Repository.php";
@@ -47,6 +58,13 @@ class ModuleRepositoryGenerator implements GeneratorProvider
         $this->commandData->commandObj->info($fileName);
     }
 
+    /**
+     * Fill template.
+     *
+     * @param $templateData string
+     *
+     * @return string
+     */
     private function fillTemplate($templateData)
     {
         $templateData = str_replace('$NAMESPACE$', $this->namespace, $templateData);

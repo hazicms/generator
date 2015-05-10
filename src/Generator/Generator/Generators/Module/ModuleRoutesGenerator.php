@@ -7,7 +7,6 @@ use HaziCms\Generator\Generator\Templates\TemplatesHelper;
 
 class ModuleRoutesGenerator implements GeneratorProvider
 {
-    /** @var  CommandData */
     private $commandData;
 
     private $path;
@@ -16,11 +15,16 @@ class ModuleRoutesGenerator implements GeneratorProvider
 
     private $apiNamespace;
 
+    /**
+     * Create a new modulemigrationgenerator instance.
+     *
+     * @param $commandData Mitul\Generator\CommandData
+     * 
+     */
     function __construct($commandData)
     {
         $this->commandData = $commandData;
 
-        // $this->path = Config::get('generator.path_routes', app_path('Http/routes.php'));
         $particular =  base_path(Config::get('generator.tmp_modules', 'app/Modules/')).ucfirst($commandData->moduleName).'/';
         $this->path = $particular.Config::get('generator.path_routes_module', app_path('Http/routes.php'));
 
@@ -28,6 +32,12 @@ class ModuleRoutesGenerator implements GeneratorProvider
         $this->apiNamespace = Config::get('generator.namespace_api_controller', 'App\Http\Controllers\API');
     }
 
+    /**
+     * Generate a new module migration file.
+     *
+     * @return null
+     * 
+     */
     public function generate()
     {
         $routeContents = $this->commandData->fileHelper->getFileContents($this->path);
@@ -51,6 +61,13 @@ class ModuleRoutesGenerator implements GeneratorProvider
         $this->commandData->commandObj->info("\"" . $this->commandData->modelNamePluralCamel . "\" route added.");
     }
 
+    /**
+     * Fill template.
+     *
+     * @param $templateData string
+     *
+     * @return string
+     */
     private function fillTemplate($templateData)
     {
         $templateData = str_replace('$MODEL_NAME$', $this->commandData->modelName, $templateData);
@@ -60,6 +77,12 @@ class ModuleRoutesGenerator implements GeneratorProvider
         return $templateData;
     }
 
+    /**
+     * Generate API routes.
+     *
+     * @return string
+     * 
+     */
     private function generateAPIRoutes()
     {
         $apiNamespacePostfix = substr($this->apiNamespace, strlen('App\Http\Controllers\\'));
@@ -67,6 +90,12 @@ class ModuleRoutesGenerator implements GeneratorProvider
         return "\n\nRoute::resource('" . $this->apiPrefix . "/" . $this->commandData->modelNamePluralCamel . "', '" . $apiNamespacePostfix . "\\" . $this->commandData->modelName . "APIController');";
     }
 
+    /**
+     * Generate Scaffold routes.
+     *
+     * @return string
+     * 
+     */
     private function generateScaffoldRoutes()
     {
         $namespace = Config::get('generator.namespace_base', base_path('resources/views'));
@@ -77,13 +106,6 @@ class ModuleRoutesGenerator implements GeneratorProvider
         $routes = "\n\nRoute::resource('admin/" . $this->commandData->modelNamePluralCamel . "', '".$this->commandData->base."');";
         $routes .= "\n\nRoute::get('" . $this->commandData->modelNamePluralCamel . "/{id}', [\n'as' => '" . $this->commandData->modelNamePluralCamel . ".show',\n'uses' => '".$this->commandData->base."@show'\n]);";
 
-        // $deleteRoutes = $this->commandData->templatesHelper->getTemplate("routes", "Scaffold");
-        // $moduleTemplate = new TemplatesHelper();
-        // $deleteRoutes = $moduleTemplate->getTemplate("routes", "Module");
-
-        // $deleteRoutes = $this->fillTemplate($deleteRoutes);
-
-        // return $routes . "\n\n" . $deleteRoutes;
         return $routes;
     }
 

@@ -7,11 +7,16 @@ use HaziCms\Generator\Generator\SchemaCreator;
 
 class ModuleMigrationGenerator implements GeneratorProvider
 {
-    /** @var  CommandData */
     private $commandData;
 
     private $path;
 
+    /**
+     * Create a new modulemigrationgenerator instance.
+     *
+     * @param $commandData Mitul\Generator\CommandData
+     * 
+     */
     function __construct($commandData)
     {
         $this->commandData = $commandData;
@@ -21,6 +26,12 @@ class ModuleMigrationGenerator implements GeneratorProvider
 
     }
 
+    /**
+     * Generate a new module migration file.
+     *
+     * @return null
+     * 
+     */
     public function generate()
     {
         $templateData = $this->commandData->templatesHelper->getTemplate("Migration", "Common");
@@ -30,12 +41,19 @@ class ModuleMigrationGenerator implements GeneratorProvider
         $fileName = date('Y_m_d_His') . "_" . "create_" . $this->commandData->tableName . "_table.php";
 
         $path = $this->path . $fileName;
-        // dd($path);
+        
         $this->commandData->fileHelper->writeFile($path, $templateData);
         $this->commandData->commandObj->comment("\nMigration created: ");
         $this->commandData->commandObj->info($fileName);
     }
 
+    /**
+     * Fill template.
+     *
+     * @param $templateData string
+     *
+     * @return string
+     */
     private function fillTemplate($templateData)
     {
         $templateData = str_replace('$MODEL_NAME_PLURAL$', $this->commandData->modelNamePlural, $templateData);
@@ -47,6 +65,12 @@ class ModuleMigrationGenerator implements GeneratorProvider
         return $templateData;
     }
 
+    /**
+     * Generate fields migration.
+     *
+     * @return string
+     * 
+     */
     private function generateFieldsStr()
     {
         $fieldsStr = "\$table->increments('id');\n";

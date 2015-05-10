@@ -15,9 +15,8 @@ class SchemaBuilderFloatField extends FieldHelper implements Field {
 	 * @return string
 	 */
 	public function getHtml($name, $value = null, $default = null, array $attr = null) {
-		// return "Form::input('number', '".$name."', '".$value."', ".FieldHelper::arrayToString($attr).")";
-		
 		$format = "{!! Form::number('%s', %s, %s) !!}";
+		
 		return sprintf($format, $name, $value, FieldHelper::arrayToString($attr));
 	}
 

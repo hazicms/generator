@@ -1,6 +1,7 @@
-BLOG
-// user_id:select,'id' => 'mySelect', 'class' => 'red':['admin' => 'admin','user' => 'user']:user
+Different examples for fields:
 
-user_id:select,'id' => 'mySelect', 'class' => 'red':['admin' => 'admin','user' => 'user', 'paco' => 'paco']:user
-title:text,'size' => 255
-body:textarea,'placeholder' => 'Body content'
+* For a blog system:
+
+	- user_ii field: user_id:select,'id' => 'mySelect', 'class' => 'red':['admin' => 'admin','user' => 'user', 'paco' => 'paco']:user
+	- title field: title:text,'size' => 255
+    - body field: body:textarea,'placeholder' => 'Body content'

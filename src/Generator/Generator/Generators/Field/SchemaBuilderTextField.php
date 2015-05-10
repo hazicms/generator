@@ -15,8 +15,8 @@ class SchemaBuilderTextField extends FieldHelper implements Field {
 	public function getHtml($name, $value = null, $default, array $attr = null) {
 		$attr['class'] = "form-control";
 	
-		// return "Form::text('".$name."', null, ".FieldHelper::arrayToString($attr).")";
 		$format = "{!! Form::text('%s', null, %s) !!}";
+		
 		return sprintf($format, $name, FieldHelper::arrayToString($attr));
 	}
 

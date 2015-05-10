@@ -70,6 +70,11 @@ class ModuleModelGeneratorCommand extends Command
         $this->getData();
     }
 
+    /**
+     * Ask needed data for generator.
+     *
+     * @return void
+     */
     private function getData()
     {
         $this->commandData->initVariables();
@@ -99,7 +104,6 @@ class ModuleModelGeneratorCommand extends Command
         if($this->confirm("\nDo you want to migrate database? [y|N]", false)) {
             $particular =  Config::get('generator.tmp_modules', 'app/Modules/').ucfirst($this->commandData->moduleName).'/';
             $path = $particular.Config::get('generator.path_migration_module', app_path('Database/Migrations/'));
-                // TODO: if table doesnt exist $this->commandData->moduleName
                 $this->call('migrate', ['--path' => $path]);
         }
     }

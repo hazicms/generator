@@ -16,6 +16,7 @@ class SchemaBuilderDateField extends FieldHelper implements Field {
 	 */
 	public function getHtml($name, $value = null, $default = null, array $attr = null) {
 		$attr['class'] = "date";
+		
 		$format = "@section('css')
 			<link href='/theme/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css' rel='stylesheet' type='text/css' />
 		@stop

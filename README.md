@@ -1,14 +1,12 @@
-Module generator for HaziCms
-
 Steps to Get Started
----------------------
+--------------------
 
 1. Add this package to your composer.json:
   
         "require": {
             "pingpong/generators": "2.0.*@dev",
             "pingpong/modules": "2.0.x-dev",
-            "hazicms/generator": "dev-master"
+            "hazicms/generator": "1.0"
         }
   
 2. Run composer update
@@ -60,7 +58,9 @@ Steps to Get Started
  
 11. Enter the fields with options<br>
 
-    Examples:
+    fieldName:fieldType[,htmlAtribute1 ,htmlAtribute2]:[fieldData]:[defaultOption]
+    
+    Examples: 
         
         Select: group:select,'id' => 'mySelect', 'class' => 'red':['admin' => 'admin','user' => 'user']:user
         Text: title:text,'size' => 255
@@ -71,10 +71,12 @@ Steps to Get Started
         Number: assistance:number,'id' => 'assistance', 'class' => 'red'
         Date: birthday:date,'id' => 'date', 'class' => 'red' (make ```bower install``` inside generator folder)
 
+    There are some basic field examples on field_example_data file.
+
 (*) Need to uncomment 3 lines on the modules controller to run. Laravelcollective/form has a bug with checkboxes. Until this been solved, this trick is needed! :-(
 If you see "preg_replace(): Parameter mismatch, pattern is a string while replacement is an array" error, you need to read the last sentece. :-)
 
-12. Go to http://domain.com/admin/[Pural's ModelName] :)
+12. Go to http://domain.com/admin/[Plural's ModelName] :)
 
 
 Use ROXY fileman[0] as a filebrowser for CKEditor

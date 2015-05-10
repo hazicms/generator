@@ -6,7 +6,6 @@ use Mitul\Generator\Generators\GeneratorProvider;
 
 class ModuleModelGenerator implements GeneratorProvider
 {
-    /** @var  CommandData */
     private $commandData;
 
     private $path;
@@ -15,21 +14,31 @@ class ModuleModelGenerator implements GeneratorProvider
 
     private $customModelExtend;
 
+    /**
+     * Create a new modulemigrationgenerator instance.
+     *
+     * @param $commandData Mitul\Generator\CommandData
+     * 
+     */
     function __construct($commandData)
     {
         $this->commandData = $commandData;
 
-        // $this->path = Config::get('generator.path_model', app_path('/'));
         $particular =  base_path(Config::get('generator.tmp_modules', 'app/Modules/')).ucfirst($commandData->moduleName).'/';
         $this->path = $particular.Config::get('generator.path_model_module', app_path('/'));
 
-        // $this->namespace = Config::get('generator.namespace_model', 'App');
         $particular = Config::get('generator.namespace_base', 'App').'\\'.ucfirst($commandData->moduleName).'\\';
         $this->namespace = $particular.Config::get('generator.namespace_model_module', 'App');
 
         $this->customModelExtend = Config::get('generator.model_extend', false);
     }
 
+    /**
+     * Generate a new module migration file.
+     *
+     * @return null
+     * 
+     */
     function generate()
     {
         $templateName = "Model";
@@ -55,6 +64,13 @@ class ModuleModelGenerator implements GeneratorProvider
         $this->commandData->commandObj->info($fileName);
     }
 
+    /**
+     * Fill template.
+     *
+     * @param $templateData string
+     *
+     * @return string
+     */
     private function fillTemplate($templateData)
     {
         $templateData = str_replace('$NAMESPACE$', $this->namespace, $templateData);
@@ -92,6 +108,12 @@ class ModuleModelGenerator implements GeneratorProvider
         return $templateData;
     }
 
+    /**
+     * Generate rules.
+     *
+     * @return string
+     * 
+     */
     private function generateRules()
     {
         $rules = [];
@@ -100,7 +122,6 @@ class ModuleModelGenerator implements GeneratorProvider
         {
             if(!empty($field['validations']))
             {
-                // $rule = '"' . $field['fieldName'] . '" => "' . $field['validations'] . '"';
                 $rule = '"' . $field['fieldName'] . '" => "' . $field['validations'] . '"';
                 $rules[] = $rule;
             }

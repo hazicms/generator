@@ -7,6 +7,6 @@ packages on a new commad: mitul.generator:module_model.
 [1] http://sky.pingpong-labs.com/docs/2.0/modules
 
 
-== v1.0 ==
+== v1.0 == (10/05/2015)
 
-  WORKING ON IT to have a field generator for text,float,boolean...
+Added field generator for select, text, float, textarea, radiobutton, checkbox, number and date.

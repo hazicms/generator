@@ -19,7 +19,6 @@ class SchemaCreator
 			if($field['fieldValues'] != null) {
 				$fieldStr .= ", ['".implode("', '", array_keys($field['fieldValues']))."']";
 			} else {
-				//dd($field['fieldTypeParams']);
 				foreach($field['fieldTypeParams'] as $key => $param)
 				{
 					if(in_array($key, $allowedParams))  $fieldStr .= ", " . $param;

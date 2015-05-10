@@ -24,11 +24,6 @@ class SchemaBuilderCheckField extends FieldHelper implements Field {
 
 		foreach($value as $v) {
 
-			// $format .= "{!! Form::label('".$v."[]', '".ucfirst($v)."') !!}
-			// {!! Form::checkbox('".$name."', '".$v."') !!}";
-
-
-
 			$format .= "<?php \$checked = ''; ?>
 		    	{!! Form::label('".$v."[]', '".ucfirst($v)."') !!}
 		    	@if (isset(\$".$this->commandData->modelNameCamel.") && is_array(\$".$this->commandData->modelNameCamel."['".$name."'])) 

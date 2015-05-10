@@ -18,25 +18,26 @@ class CommandData
 	public $tableName;
 	public $inputFields;
 
-	/** @var  string */
 	public $commandType;
 
-	/** @var  APIGeneratorCommand */
 	public $commandObj;
 
-	/** @var FileHelper */
 	public $fileHelper;
 
-	/** @var TemplatesHelper */
 	public $templatesHelper;
 
-	/** @var  bool */
 	public $useSoftDelete;
 
 	public static $COMMAND_TYPE_API = 'api';
 	public static $COMMAND_TYPE_SCAFFOLD = 'scaffold';
 	public static $COMMAND_TYPE_SCAFFOLD_API = 'scaffold_api';
 
+	/**
+     * Create a new modulemigrationgenerator instance.
+     *
+     * @param $commandData Mitul\Generator\CommandData
+     * 
+     */
 	function __construct($commandObj, $commandType)
 	{
 		$this->commandObj = $commandObj;
@@ -45,6 +46,12 @@ class CommandData
 		$this->templatesHelper = new TemplatesHelper();
 	}
 
+	/**
+     * Init variables needed for generator.
+     *
+     * @return null
+     * 
+     */
 	public function initVariables()
 	{
 		$this->modelNamePlural = Str::plural($this->modelName);
@@ -54,6 +61,12 @@ class CommandData
 		$this->modelNamespace = Config::get('generator.namespace_model_module', 'App') . "\\" . $this->modelName;
 	}
 
+	/**
+     * Command text for field ask.
+     *
+     * @return array
+     * 
+     */
 	public function getInputFields()
 	{
 		$fields = [];
@@ -69,7 +82,7 @@ class CommandData
 				break;
 
 			$fieldInputs = explode(":", $fieldInputStr);
-// var_dump($fieldInputs);
+
 			if(sizeof($fieldInputs) < 2 OR sizeof($fieldInputs) > 4)
 			{
 				$this->commandObj->error("Invalid Input. Try again");
@@ -80,15 +93,11 @@ class CommandData
 			$fieldTypeOptions = explode(",", $fieldInputs[1]);
 			$fieldType = $fieldTypeOptions[0];
 			$fieldTypeParams = [];
-			// if(sizeof($fieldTypeOptions) == 1)
-			// {
+
 			for($i = 1; $i < sizeof($fieldTypeOptions); $i++) {
-				// dd($fieldTypeOptions);
 				if (strpos($fieldTypeOptions[$i],"=>") !== false) {
 					$option = explode("=>", $fieldTypeOptions[$i]);
 					$option = $this->sanitizeArrayCommandData($option);
-					// $option[0] = trim(rtrim($option[0],"'"),"'");
-					// $option[1] = trim(rtrim($option[1]));
 					$fieldTypeParams[$option[0]] = $option[1];
 				} else {
 					$fieldTypeOptions = explode(",", $fieldInputs[1]);
@@ -101,22 +110,11 @@ class CommandData
 					}
 				}
 			}
-				//dd($fieldTypeParams);
-			// }
 
-// 			$fieldOptions = [];
-// 			if(sizeof($fieldInputs) > 2) {
-// 				$fieldOptions[] = $fieldInputs[2];				
-// 			}
-// dd($fieldOptions);
 			$fieldValues = null;
 			if (isset($fieldInputs[2])) {
 				$fieldInputs[2] = $this->sanitizeArrayExplode($fieldInputs[2]);
-				// dd($fieldInputs[2]);
-				// foreach ($fieldInputs[2] as $key => $value) {
-				// 	var_dump($value);
-				// }
-				// dd("a");
+
 				$fieldValues = $fieldInputs[2];
 			}
 
@@ -130,46 +128,33 @@ class CommandData
 				'fieldName'       => $fieldName,
 				'fieldType'       => $fieldType,
 				'fieldTypeParams' => $fieldTypeParams,
-				// 'fieldOptions'    => $fieldOptions,
 				'fieldValues'	  => $fieldValues,
 				'fieldDefault'	  => $fieldDefault,
 				'validations'     => $validations
 			];
 
 			$fields[] = $field;
-			// dd($fields);
 		}
 
 		return $fields;
 	}
 
+	/**
+     * Sanitize array.
+     *
+     * @return array
+     * 
+     */
 	private function sanitizeArrayExplode($inputs)
 	{
-			//var_dump("HASIERAN: ".$inputs. "<br>");
-			
-			$inputs = substr($inputs, 1);
-			//var_dump("1: ".$inputs. "<br>");
-			
-			$inputs = substr($inputs, 1, strlen($inputs)-3);
-			// var_dump("2: ".$inputs. "<br>");
-			$inputs = explode(",", $inputs);
-			// echo "3: ";
-			// var_dump($inputs);
-			
+		$inputs = substr($inputs, 1);		
+		$inputs = substr($inputs, 1, strlen($inputs)-3);
+		$inputs = explode(",", $inputs);	
 			
 		for($i = 1; $i < sizeof($inputs); $i++) {
-			// echo $inputs[$i];
-			// $inputs[$i] = trim($inputs[$i]);
-			// $inputs[$i] = rtrim($inputs[$i], "[");
-			// $inputs[$i] = str_replace($inputs[$i], "", "[");
-			// $inputs[$i] = str_replace($inputs[$i], "", "']");
-			// $inputs[$i] = trim($inputs[$i], "']");
-			
-			// dd($inputs);
-			//$input = explode(",", $inputs);
 			$res = [];
+		
 			foreach ($inputs as $x => $input) {
-				// var_dump($x);
 				$in = explode("=>", $input);
 				$in[0] = ltrim($in[0], ' ');
 				$in[0] = ltrim($in[0], '\'');
@@ -180,36 +165,22 @@ class CommandData
 				$in[1] = ltrim($in[1], '\'');
 				$in[1] = rtrim($in[1], ' ');
 				$in[1] = rtrim($in[1], '\'');
-				// echo substr($in[0], 0, 1);
-				// if (substr($in[0], 1, 1)  == '\'') {
-				// 	$in[0] = substr($in[0], 1);
-				// }
-				//var_dump($in);
-				// $in[0] = trim($in[0]);
-				// $in[1] = trim($in[1], "'");
-				//var_dump($in[$x]);
-				// $in[1] = trim($in[1]);
-				// $in[1] = trim($in[1], "'");
 
-				// $strr = $strr[$x];
-				// var_dump($in[$x]);
 				$res[$in[0]] = $in[1];
 			}
-			// dd($res);
 		}
-
-		/* array:2 [
-			  "admin" => "admin"
-  			  "user" => "user"
-		] */ 
 
 		return $res;
 	}
 
+	/**
+     * Sanitize array from command line.
+     *
+     * @return array
+     * 
+     */
 	private function sanitizeArrayCommandData($option) 
 	{
-		//array_walk
-	
 		$option[0] = trim($option[0]);
 		$option[0] = trim($option[0],"'");
 		$option[0] = rtrim($option[0],"'");

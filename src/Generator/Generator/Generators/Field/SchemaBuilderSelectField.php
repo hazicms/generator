@@ -19,7 +19,6 @@ class SchemaBuilderSelectField extends FieldHelper implements Field {
 	 * @return string
 	 */
 	public function getHtml($name, $value = null, $default, array $attr = null) {
-		// return "Form::select('".$name."', ".FieldHelper::arrayToString($value).", ".$default.", ".FieldHelper::arrayToString($attr).")";
 		$format = "
 				@if(isset(%s)) 
 					{!! Form::select('%s', %s, %s, %s) !!} 
@@ -27,7 +26,6 @@ class SchemaBuilderSelectField extends FieldHelper implements Field {
 					{!! Form::select('%s', %s, %s, %s) !!} 
 				@endif";
 				
-				// dd(FieldHelper::arrayToString(['admin' => 'admin', 'user' => 'user']));
 		return sprintf($format, "\$status", $name, FieldHelper::arrayToString($value), "$".strtolower($this->commandData->modelName)."->".$name, FieldHelper::arrayToString($attr),
 					    $name, FieldHelper::arrayToString($value), $default, FieldHelper::arrayToString($attr));
 

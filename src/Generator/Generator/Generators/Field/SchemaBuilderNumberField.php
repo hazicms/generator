@@ -16,6 +16,7 @@ class SchemaBuilderNumberField extends FieldHelper implements Field {
 	 */
 	public function getHtml($name, $value = null, $default = null, array $attr = null) {
 		$format = "{!! Form::number('%s', %s, %s) !!}";
+		
 		return sprintf($format, $name, $value, FieldHelper::arrayToString($attr));
 	}
 

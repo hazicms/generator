@@ -7,33 +7,40 @@ use HaziCms\Generator\Generator\Templates\TemplatesHelper;
 
 class ModuleRequestGenerator implements GeneratorProvider
 {
-    /** @var  CommandData */
     private $commandData;
 
     private $path;
 
     private $namespace;
 
+    /**
+     * Create a new modulemigrationgenerator instance.
+     *
+     * @param $commandData Mitul\Generator\CommandData
+     * 
+     */
     function __construct($commandData)
     {
         $this->commandData = $commandData;
 
-        // $this->path = Config::get('generator.path_request', app_path('Http/Requests/'));
         $particular =  base_path(Config::get('generator.tmp_modules', 'app/Modules/')).ucfirst($commandData->moduleName).'/';
         $this->path = $particular.Config::get('generator.path_request_module', app_path('Http/Requests/'));
 
-        // $this->namespace = Config::get('generator.namespace_request', 'App\Http\Requests');
         $particular = Config::get('generator.namespace_base', 'App').'\\'.ucfirst($commandData->moduleName).'\\';
         $this->namespace = $particular.Config::get('generator.namespace_request_module', 'App\Http\Requests');
 
-        // $this->commandData->modelNamespace = 'Cms\Modules\Modulo\Entities\Modelo';
         $this->commandData->modelNamespace = Config::get('generator.namespace_base', 'App') . "\\" . $commandData->moduleName . "\\" .Config::get('generator.namespace_model_module', 'App'). "\\" . $commandData->modelName ;
 
     }
 
+    /**
+     * Generate a new module migration file.
+     *
+     * @return null
+     * 
+     */
     function generate()
     {
-        // $templateData = $this->commandData->templatesHelper->getTemplate("Request", "Scaffold");
         $moduleTemplate = new TemplatesHelper();
         $templateData = $moduleTemplate->getTemplate("Request", "Module");
 
@@ -48,6 +55,13 @@ class ModuleRequestGenerator implements GeneratorProvider
         $this->commandData->commandObj->info($fileName);
     }
 
+    /**
+     * Fill template.
+     *
+     * @param $templateData string
+     *
+     * @return string
+     */
     private function fillTemplate($templateData)
     {
         $templateData = str_replace('$NAMESPACE$', $this->namespace, $templateData);

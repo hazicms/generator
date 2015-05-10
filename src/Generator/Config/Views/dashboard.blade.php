@@ -335,7 +335,7 @@
     </script>
     <!-- Bootstrap 3.3.2 JS -->
     <script src="/theme/admin-lte/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <!-- AdminLTE App. Tiene el có  digo para el menu de la izquierda -->
+    <!-- AdminLTE App. Tiene el código para el menu de la izquierda -->
     <script src="/theme/admin-lte/dist/js/app.min.js" type="text/javascript"></script>
     @yield('js')
   </body>

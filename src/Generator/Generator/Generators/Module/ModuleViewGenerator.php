@@ -26,6 +26,12 @@ class ModuleViewGenerator implements GeneratorProvider
 
     private $repoNamespace;
 
+    /**
+     * Create a new modulemigrationgenerator instance.
+     *
+     * @param $commandData Mitul\Generator\CommandData
+     * 
+     */
     function __construct($commandData)
     {
         $this->commandData = $commandData;
@@ -35,6 +41,12 @@ class ModuleViewGenerator implements GeneratorProvider
         $this->viewsPath = "Module/Views";
     }
 
+    /**
+     * Generate a new module migration file.
+     *
+     * @return null
+     * 
+     */
     public function generate()
     {
         if(!file_exists($this->path))
@@ -52,6 +64,13 @@ class ModuleViewGenerator implements GeneratorProvider
         $this->generateEdit();
     }
 
+    /**
+     * Fill template.
+     *
+     * @param $templateData string
+     *
+     * @return string
+     */
     private function generateFields()
     {
         $moduleTemplate = new TemplatesHelper();
@@ -85,6 +104,13 @@ class ModuleViewGenerator implements GeneratorProvider
         $this->commandData->commandObj->info("field.blade.php created");
     }
 
+    /**
+     * Map introduced field with laravelCollective/Form.
+     *
+     * @param $fieldType string
+     *
+     * @return array
+     */
     private function map($fieldType)
     {
         $array = Config::get('generator.view_map');
@@ -94,6 +120,17 @@ class ModuleViewGenerator implements GeneratorProvider
         return $array[$fieldType];
     }
 
+    /**
+     * Generate HTML,css,js for field type
+     *
+     * @param $fieldName string
+     * @param $fieldType string
+     * @param $fieldTypeParams array
+     * @param $fieldTypeValues array
+     * @param $fieldDefault string
+     * 
+     * @return text
+     */
     private function generateField($fieldName, $fieldType, $fieldTypeParams, $fieldValues, $fieldDefault)
     {
         $fieldType = $this->map($fieldType);
@@ -132,12 +169,6 @@ class ModuleViewGenerator implements GeneratorProvider
             // sex:check,'id' => 'sex', 'class' => 'red':['clean_the_room' => 'clean','go_to_your_home' => 'home']:home
             case 'check':
                 $field = new SchemaBuilderCheckField($this->commandData);
-               
-                // add model events to route.php module file
-                // $particular =  base_path(Config::get('generator.tmp_modules', 'app/Modules/')).ucfirst($this->commandData->moduleName).'/';
-                // $this->pathRoute = $particular.Config::get('generator.path_routes_module', app_path('Http/routes.php'));
-                // $this->commandData->fileHelper->writeFile($this->pathRoute, $this->generateModelEvents());
-   
                 return $field->getHtml($fieldName, $fieldValues, 'null', $fieldTypeParams);
                 break;
 
@@ -160,12 +191,12 @@ class ModuleViewGenerator implements GeneratorProvider
 
     }
 
-    // private function generateModelEvents()
-    // {
-    //     return "<?php\n\nuse Cms\Modules\\".$this->commandData->moduleName."\Entities\\".$this->commandData->modelName.";\n\n".$this->commandData->modelName."::saving(function(\$request) {\n\t\t\$request['sex'] = implode(',', \$request['sex']);\n\n});";
-    // }
-
-
+    /**
+     * Generate index view
+     *
+     * @return null
+     * 
+     */
     private function generateIndex()
     {
         $moduleTemplate = new TemplatesHelper();
@@ -201,14 +232,12 @@ class ModuleViewGenerator implements GeneratorProvider
         }
 
         $headerFields = trim($headerFields);
-        // dd($columns);
 
         $templateData = str_replace('$UPDATE_AT_FIELD_POSITION$', $counter++, $templateData);
         $templateData = str_replace('$FIELD_HEADERS$', $headerFields, $templateData);
 
         $tableBodyFields = "";
 
-        // foreach($this->commandData->inputFields as $field)
         foreach($columns as $column) {
             $tableBodyFields .= "<td>{!! $" . $this->commandData->modelNameCamel . "->" . $column . " !!}</td>\n\t\t\t\t\t";
         }
@@ -223,6 +252,12 @@ class ModuleViewGenerator implements GeneratorProvider
         $this->commandData->commandObj->info("index.blade.php created");
     }
 
+    /**
+     * Generate show view
+     *
+     * @return null
+     * 
+     */
     private function generateShow()
     {
         $moduleTemplate = new TemplatesHelper();
@@ -236,6 +271,12 @@ class ModuleViewGenerator implements GeneratorProvider
         $this->commandData->commandObj->info("show.blade.php created");
     }
 
+    /**
+     * Generate create view
+     *
+     * @return null
+     * 
+     */
     private function generateCreate()
     {
         $moduleTemplate = new TemplatesHelper();
@@ -251,6 +292,12 @@ class ModuleViewGenerator implements GeneratorProvider
         $this->commandData->commandObj->info("create.blade.php created");
     }
 
+    /**
+     * Generate edit view
+     *
+     * @return null
+     * 
+     */
     private function generateEdit()
     {
         $moduleTemplate = new TemplatesHelper();
@@ -266,6 +313,13 @@ class ModuleViewGenerator implements GeneratorProvider
         $this->commandData->commandObj->info("edit.blade.php created");
     }
 
+    /**
+     * Fill template.
+     *
+     * @param $templateData string
+     *
+     * @return string
+     */
     private function fillTemplate($templateData)
     {
         $templateData = str_replace('$MODEL_NAME$', $this->commandData->modelName, $templateData);

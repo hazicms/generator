@@ -15,8 +15,8 @@
     ],
     "require": {
         "php": ">=5.4.0",
-    "pingpong/modules": "2.0.*@dev",
-    "mitulgolakiya/laravel-api-generator": "1.2.*",
+        "pingpong/modules": "2.0.*@dev",
+        "mitulgolakiya/laravel-api-generator": "1.2.*",
         "laravelcollective/html": "~5.0",
         "intervention/image": "~2.2"
     },
