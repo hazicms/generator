@@ -1,8 +1,9 @@
 {
-  "name": "blog",
-  "version": "0.0.1",
-  "description": "Gestor de blogs",
+  "name": "hazicms/generator",
+  "version": "0.5",
+  "description": "Module generator for HaziCms",
   "dependencies": {
-    "admin-lte": "~2.0.5"
+    "admin-lte": "~2.0.5",
+    "bootstrap-datepicker": "~1.4.0"
   }
 }

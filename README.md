@@ -1,4 +1,4 @@
-Laravel API Generator Extend
+Module generator for HaziCms
 
 Steps to Get Started
 ---------------------
@@ -65,25 +65,31 @@ Steps to Get Started
         Select: group:select,'id' => 'mySelect', 'class' => 'red':['admin' => 'admin','user' => 'user']:user
         Text: title:text,'size' => 255
         Float: price:float,'min' => 1, 'max' => 10
-        Textarea: body:textarea,'placeholder' => 'Body content' (make ```bower install``` inside Laravelapigeneratorextend folder)
+        Textarea: body:textarea,'placeholder' => 'Body content' (make ```bower install``` inside generator folder)
         Radiobutton: sex:radio,'id' => 'sex', 'class' => 'red':['male' => 'ale','female' => 'fem']:fem
-        Checkbutton: sex:check,'id' => 'sex', 'class' => 'red':['clean_the_room' => 'clean','go_to_your_home' => 'home']:home (*)
+        Checkbutton: data:check,'id' => 'data', 'class' => 'red':['clean_the_room' => 'clean','go_to_your_home' => 'home']:home (*)
         Number: assistance:number,'id' => 'assistance', 'class' => 'red'
-        Date: birthday:date,'id' => 'date', 'class' => 'red' (make ```bower install``` inside Laravelapigeneratorextend folder)
+        Date: birthday:date,'id' => 'date', 'class' => 'red' (make ```bower install``` inside generator folder)
 
 (*) Need to uncomment 3 lines on the modules controller to run. Laravelcollective/form has a bug with checkboxes. Until this been solved, this trick is needed! :-(
+If you see "preg_replace(): Parameter mismatch, pattern is a string while replacement is an array" error,
+you need to read the last sentece. :-)
 
 12. And you are ready to go. :)
 
 
 Use ROXY fileman[0] as a filebrowser for CKEditor
-----------------------------------------------
+-------------------------------------------------
 
-Add on: /public/theme/ckeditor/config.js
+1. Download fileman for PHP, unzip on public folder and give permissions.
+
+2. Add on: /public/theme/ckeditor/config.js
 
         var roxyFileman = '/fileman/index.html';
         config.filebrowserBrowseUrl = roxyFileman;
         config.filebrowserImageBrowseUrl = roxyFileman+'?type=image';
         config.removeDialogTabs = 'link:upload;image:upload';
+
+3. On public/fileman/conf.json change INTEGRATION to "ckeditor".
 
 [0] http://www.roxyfileman.com/CKEditor-file-browser
