@@ -72,10 +72,9 @@ Steps to Get Started
         Date: birthday:date,'id' => 'date', 'class' => 'red' (make ```bower install``` inside generator folder)
 
 (*) Need to uncomment 3 lines on the modules controller to run. Laravelcollective/form has a bug with checkboxes. Until this been solved, this trick is needed! :-(
-If you see "preg_replace(): Parameter mismatch, pattern is a string while replacement is an array" error,
-you need to read the last sentece. :-)
+If you see "preg_replace(): Parameter mismatch, pattern is a string while replacement is an array" error, you need to read the last sentece. :-)
 
-12. And you are ready to go. :)
+12. Go to http://domain.com/admin/[Pural's ModelName] :)
 
 
 Use ROXY fileman[0] as a filebrowser for CKEditor
