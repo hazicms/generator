@@ -191,7 +191,7 @@ class ModuleViewGenerator implements GeneratorProvider
 
         if ($counter < 3) {
             foreach($this->commandData->inputFields as $x => $field) {
-                if ($counter <= 3) {
+                if ($counter <= 3 and !in_array($field['fieldName'], $columns)) {
                     $columns[] = $field['fieldName'];
                     $headerFields .= "<th class='sorting_asc' tabindex='0' aria-controls='dataTables-example' rowspan='1' colspan='1' aria-sort='ascending' aria-label='Rendering engine: activate to sort column descending' style='width: 171px;'>" . Str::title($field['fieldName']) . "</th>\n\t\t\t";
 
