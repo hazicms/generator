@@ -94,3 +94,13 @@ Use ROXY fileman[0] as a filebrowser for CKEditor
 3. On public/fileman/conf.json change INTEGRATION to "ckeditor".
 
 [0] http://www.roxyfileman.com/CKEditor-file-browser
+
+
+Credits
+--------
+
+This module generator is created by [Aitor Ibañez](https://github.com/aitiba).
+
+This package is based on [laravel-api-generator](https://github.com/mitulgolakiya/laravel-api-generator).
+
+**Bugs & Forks are welcomed :)**
