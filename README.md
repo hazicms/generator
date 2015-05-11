@@ -6,7 +6,7 @@ Steps to Get Started
         "require": {
             "pingpong/generators": "2.0.*@dev",
             "pingpong/modules": "2.0.x-dev",
-            "hazicms/generator": "1.0"
+            "hazicms/generator": "1.0.x"
         }
   
 2. Run composer update
