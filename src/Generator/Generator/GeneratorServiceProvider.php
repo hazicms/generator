@@ -28,17 +28,12 @@ class GeneratorServiceProvider extends ServiceProvider
 	 */
 	public function register()
 	{
-		$this->app->singleton('laravelapigeneratorextend.generator', function ($app)
+		$this->app->singleton('hazicms.generator', function ($app)
         {
             return new Commands\ModuleModelGeneratorCommand();
         });
  
-		$this->app->singleton(
-			'Illuminate\Contracts\Debug\ExceptionHandler',
-			'Mitul\Generator\Exceptions\APIExceptionsHandler'
-		);
-
-	    $this->commands(['laravelapigeneratorextend.generator']);
+	    $this->commands(['hazicms.generator']);
 	}
 
 }
