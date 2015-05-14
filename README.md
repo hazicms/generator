@@ -95,6 +95,12 @@ Use ROXY fileman[0] as a filebrowser for CKEditor
 
 [0] http://www.roxyfileman.com/CKEditor-file-browser
 
+Use outsite of HaziCms namespace
+--------------------------------
+
+1. php artisan app:name ```your_namespace```.
+
+2. Set on ```config/generator.php``` file, ```namespace``` variable to ```your_namespace```.
 
 Credits
 --------

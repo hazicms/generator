@@ -1,3 +1,14 @@
+== v1.0.2 == (14/05/205)
+- Add namespace for the packages on configuration.
+- Minor change on layout.
+
+== v1.0.1 == (12/05/2015)
+Added mitulgolakiya/laravel-api-generator@1.3 package.
+
+== v1.0 == (10/05/2015)
+
+Added field generator for select, text, float, textarea, radiobutton, checkbox, number and date.
+
 == v0.9 == (20/04/2015)
 
 Mixed mitulgolakiya's laravel API generator[0] and pingpong's module[1]
@@ -5,8 +16,3 @@ packages on a new commad: mitul.generator:module_model.
 
 [0] https://github.com/mitulgolakiya/laravel-api-generator
 [1] http://sky.pingpong-labs.com/docs/2.0/modules
-
-
-== v1.0 == (10/05/2015)
-
-Added field generator for select, text, float, textarea, radiobutton, checkbox, number and date.
