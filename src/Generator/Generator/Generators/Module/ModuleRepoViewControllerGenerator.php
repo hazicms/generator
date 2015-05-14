@@ -27,11 +27,13 @@ class ModuleRepoViewControllerGenerator implements GeneratorProvider
     {
         $this->commandData = $commandData;
 
+        $this->namespace = Config::get('generator.namespace', 'App');
+
         $particular =  base_path(Config::get('generator.tmp_modules', 'app/Modules/')).ucfirst($commandData->moduleName).'/';
         $this->path = $particular.Config::get('generator.path_controller_module', app_path('Http/Requests/'));
 
         $particular = Config::get('generator.namespace_base', 'App').'\\'.ucfirst($commandData->moduleName).'\\';
-        $this->namespace = $particular.Config::get('generator.namespace_controller_module', 'App\Http\Controllers');
+        $this->moduleNamespace = $particular.Config::get('generator.namespace_controller_module', 'App\Http\Controllers');
         $this->repoNamespace = $particular.Config::get('generator.namespace_repository_module', 'App\Libraries\Repositories');
         $this->requestNamespace = $particular.Config::get('generator.namespace_request_module', 'App\Http\Requests');
     }
@@ -68,6 +70,8 @@ class ModuleRepoViewControllerGenerator implements GeneratorProvider
     private function fillTemplate($templateData)
     {
         $templateData = str_replace('$NAMESPACE$', $this->namespace, $templateData);
+        
+        $templateData = str_replace('$MODULE_NAMESPACE$', $this->moduleNamespace, $templateData);
         $templateData = str_replace('$MODEL_NAMESPACE$', $this->commandData->modelNamespace, $templateData);
 
         $templateData = str_replace('$REPO_NAMESPACE$', $this->repoNamespace, $templateData);

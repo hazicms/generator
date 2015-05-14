@@ -1,6 +1,6 @@
-<?php namespace $NAMESPACE$;
+<?php namespace $MODULE_NAMESPACE$;
 
-use HaziCms\Http\Requests\Request;
+use $NAMESPACE$\Http\Requests\Request;
 use $MODEL_NAMESPACE$;
 
 class Create$MODEL_NAME$Request extends Request {

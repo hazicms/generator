@@ -1,9 +1,9 @@
-<?php namespace $NAMESPACE$;
+<?php namespace $MODULE_NAMESPACE$;
 
-use HaziCms\Http\Requests;
+use $NAMESPACE$\Http\Requests;
 use $REQUEST_NAMESPACE$\Create$MODEL_NAME$Request;
 use $REPO_NAMESPACE$\$MODEL_NAME$Repository;
-use HaziCms\Generator\Controller\AppBaseController;
+use $NAMESPACE$\Generator\Controller\AppBaseController;
 use Response;
 use Flash;
 

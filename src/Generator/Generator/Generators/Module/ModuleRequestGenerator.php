@@ -23,11 +23,13 @@ class ModuleRequestGenerator implements GeneratorProvider
     {
         $this->commandData = $commandData;
 
+        $this->namespace = Config::get('generator.namespace', 'App');
+
         $particular =  base_path(Config::get('generator.tmp_modules', 'app/Modules/')).ucfirst($commandData->moduleName).'/';
         $this->path = $particular.Config::get('generator.path_request_module', app_path('Http/Requests/'));
 
         $particular = Config::get('generator.namespace_base', 'App').'\\'.ucfirst($commandData->moduleName).'\\';
-        $this->namespace = $particular.Config::get('generator.namespace_request_module', 'App\Http\Requests');
+        $this->moduleNamespace = $particular.Config::get('generator.namespace_request_module', 'App\Http\Requests');
 
         $this->commandData->modelNamespace = Config::get('generator.namespace_base', 'App') . "\\" . $commandData->moduleName . "\\" .Config::get('generator.namespace_model_module', 'App'). "\\" . $commandData->modelName ;
 
@@ -65,6 +67,8 @@ class ModuleRequestGenerator implements GeneratorProvider
     private function fillTemplate($templateData)
     {
         $templateData = str_replace('$NAMESPACE$', $this->namespace, $templateData);
+
+        $templateData = str_replace('$MODULE_NAMESPACE$', $this->moduleNamespace, $templateData);
       
         $templateData = str_replace('$MODEL_NAMESPACE$', $this->commandData->modelNamespace, $templateData);
       

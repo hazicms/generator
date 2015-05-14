@@ -3,13 +3,15 @@
 return [
 	/*
 	|--------------------------------------------------------------------------
-	| Config for LaravelApiGeneratorExtend
+	| Config for HaziCms\Generator
 	|--------------------------------------------------------------------------
 	|
-	| Basic configuration for LaravelApiGeneratorExtend
+	| Basic configuration for HaziCms\Generator
 	|
 	*/
 
+	// Namespace for HaziCms\Generator's generated files.
+	'namespace' => 'HaziCms',
 	// Column that are going to appear on index view.
 	'allowedColumns' => ['title', 'group'],
 
