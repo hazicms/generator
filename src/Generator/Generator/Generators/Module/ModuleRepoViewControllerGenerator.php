@@ -79,14 +79,12 @@ class ModuleRepoViewControllerGenerator implements GeneratorProvider
                     $name = explode("_", $field['fieldName']);
                     $entity = ucfirst($name[0]);
                     $selectData .= "\$".$name[0]."s = \HaziCms\Auth\\".$entity."::lists('name','id');\n\t\t";
-
-                    $selectViewData .= "'".$name[0]."s' => $".$name[0]."s,";
+                    $selectViewData .= "->with('".$name[0]."s', $".$name[0]."s";
                 }
             }
         }
 
-        
-        if ($selectViewData != "") $selectViewData = ",[".trim($selectViewData, ",")."]";
+        if ($selectViewData != "") $selectViewData = ") ".$selectViewData;
         
         $templateData = str_replace('$NAMESPACE$', $this->namespace, $templateData);
         

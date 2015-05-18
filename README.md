@@ -63,7 +63,7 @@ Steps to Get Started
     Examples: 
         
         Select: group:select,'id' => 'mySelect', 'class' => 'red':['admin' => 'admin','user' => 'user']:user
-        Select (data from database): role_id:select,'id' => 'mySelect', 'class' => 'red'
+        Select (data from model): role_id:select,'id' => 'mySelect', 'class' => 'red'
         Text: title:text,'size' => 255
         Float: price:float,'min' => 1, 'max' => 10
         Textarea: body:textarea,'placeholder' => 'Body content' (make ```bower install``` inside generator folder)
