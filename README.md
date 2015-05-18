@@ -76,7 +76,10 @@ Steps to Get Started
 (*) Need to uncomment 3 lines on the modules controller to run. Laravelcollective/form has a bug with checkboxes. Until this been solved, this trick is needed! :-(
 If you see "preg_replace(): Parameter mismatch, pattern is a string while replacement is an array" error, you need to read the last sentece. :-)
 
-12. Go to http://domain.com/admin/[Plural's ModelName] :)
+12. (optional) If you want, you can add auth middleware to module routes.
+        Route::group(['prefix' => 'admin', 'middleware' => 'auth') ...
+
+13. Go to http://domain.com/admin/[Plural's ModelName] :)
 
 
 Use ROXY fileman[0] as a filebrowser for CKEditor
