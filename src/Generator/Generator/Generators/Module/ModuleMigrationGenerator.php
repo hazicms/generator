@@ -21,7 +21,7 @@ class ModuleMigrationGenerator implements GeneratorProvider
     {
         $this->commandData = $commandData;
 
-        $particular =  base_path(Config::get('generator.tmp_modules', 'app/Modules/')).ucfirst($commandData->moduleName).'/';
+        $particular = base_path(Config::get('generator.tmp_modules', 'app/Modules/')).ucfirst($commandData->moduleName).'/';
         $this->path = $particular.Config::get('generator.path_migration_module');
 
     }

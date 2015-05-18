@@ -41,7 +41,9 @@ class $MODEL_NAME$Controller extends AppBaseController
 	 */
 	public function create()
 	{
-		return view('$MODULE_NAME$::$MODEL_NAME$.admin.create');
+		$SELECT_ID_CONTENT$
+		
+		return view('$MODULE_NAME$::$MODEL_NAME$.admin.create'$SELECT_ID_VIEW$);
 	}
 
 	/**

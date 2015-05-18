@@ -12,6 +12,10 @@ class SchemaCreator
 
 		$fieldType = self::map($field['fieldType']);
 
+		if($field['fieldType'] == 'select' AND substr($field['fieldName'], -3) == '_id') {
+			$fieldType = 'integer';
+		}
+
 		$fieldStr = "\t\t\t\$table->" . $fieldType . "('" . $field['fieldName'] . "'";
 
 		if(!empty($field['fieldTypeParams']))

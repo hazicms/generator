@@ -26,7 +26,7 @@ class ModuleRepoViewControllerGenerator implements GeneratorProvider
     function __construct($commandData)
     {
         $this->commandData = $commandData;
-
+// dd($this->commandData->inputFields);
         $this->namespace = Config::get('generator.namespace', 'App');
 
         $particular =  base_path(Config::get('generator.tmp_modules', 'app/Modules/')).ucfirst($commandData->moduleName).'/';
@@ -69,6 +69,25 @@ class ModuleRepoViewControllerGenerator implements GeneratorProvider
      */
     private function fillTemplate($templateData)
     {
+        $selectData = "";
+        $selectViewData = "";
+
+        foreach($this->commandData->inputFields as $field) {
+            if($field['fieldType'] == "select") {
+                if(substr($field['fieldName'], -3) == '_id') {
+                    // echo "_id";
+                    $name = explode("_", $field['fieldName']);
+                    $entity = ucfirst($name[0]);
+                    $selectData .= "\$".$name[0]."s = \HaziCms\Auth\\".$entity."::lists('name','id');\n\t\t";
+
+                    $selectViewData .= "'".$name[0]."s' => $".$name[0]."s,";
+                }
+            }
+        }
+
+        
+        if ($selectViewData != "") $selectViewData = ",[".trim($selectViewData, ",")."]";
+        
         $templateData = str_replace('$NAMESPACE$', $this->namespace, $templateData);
         
         $templateData = str_replace('$MODULE_NAMESPACE$', $this->moduleNamespace, $templateData);
@@ -84,6 +103,9 @@ class ModuleRepoViewControllerGenerator implements GeneratorProvider
 
         $templateData = str_replace('$MODEL_NAME_CAMEL$', $this->commandData->modelNameCamel, $templateData);
         $templateData = str_replace('$MODEL_NAME_PLURAL_CAMEL$', $this->commandData->modelNamePluralCamel, $templateData);
+        
+        $templateData = str_replace('$SELECT_ID_CONTENT$', $selectData, $templateData);
+        $templateData = str_replace('$SELECT_ID_VIEW$', $selectViewData, $templateData);
         
         return $templateData;
     }
