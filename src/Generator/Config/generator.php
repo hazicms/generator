@@ -102,7 +102,8 @@ return [
     	'radio' => 'text',
     	'check' => 'text',
     	'number' => 'integer',
-    	'date' => 'datetime'
+    	'date' => 'datetime',
+    	'hidden' => 'integer'
     ],
 
     'view_map' => [

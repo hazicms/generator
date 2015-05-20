@@ -65,6 +65,7 @@ Steps to Get Started
         Select: group:select,'id' => 'mySelect', 'class' => 'red':['admin' => 'admin','user' => 'user']:user
         Select (data from model): role_id:select,'id' => 'mySelect', 'class' => 'red'
         Text: title:text,'size' => 255
+        Hidden: user_id:hidden,'id'=> 'user_id' // if the name ends with '_id', we suppose that the value is the model id. // Else value is null
         Float: price:float,'min' => 1, 'max' => 10
         Textarea: body:textarea,'placeholder' => 'Body content' (make ```bower install``` inside generator folder)
         Radiobutton: sex:radio,'id' => 'sex', 'class' => 'red':['male' => 'ale','female' => 'fem']:fem

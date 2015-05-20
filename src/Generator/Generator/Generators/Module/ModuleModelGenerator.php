@@ -3,6 +3,7 @@
 use Config;
 use Mitul\Generator\CommandData;
 use Mitul\Generator\Generators\GeneratorProvider;
+use HaziCms\Generator\Generator\Templates\TemplatesHelper;
 
 class ModuleModelGenerator implements GeneratorProvider
 {
@@ -31,6 +32,13 @@ class ModuleModelGenerator implements GeneratorProvider
         $this->namespace = $particular.Config::get('generator.namespace_model_module', 'App');
 
         $this->customModelExtend = Config::get('generator.model_extend', false);
+
+        $this->viewsPath = "Module";
+
+        $namespaceBase = Config::get('generator.namespace', 'App');
+        $this->modelRelations = "public function user() {
+            return \$this->belongsTo('".$namespaceBase."\User');
+        }";
     }
 
     /**
@@ -48,7 +56,9 @@ class ModuleModelGenerator implements GeneratorProvider
             $templateName = "Model_Extended";
         }
 
-        $templateData = $this->commandData->templatesHelper->getTemplate($templateName, "Common");
+        // $templateData = $this->commandData->templatesHelper->getTemplate($templateName, "Common");
+        $moduleTemplate = new TemplatesHelper();
+        $templateData = $moduleTemplate->getTemplate($templateName, $this->viewsPath);
 
         $templateData = $this->fillTemplate($templateData);
 
@@ -73,6 +83,8 @@ class ModuleModelGenerator implements GeneratorProvider
      */
     private function fillTemplate($templateData)
     {
+        $templateData = str_replace('$MODEL_RELATIONS$', $this->modelRelations, $templateData);
+
         $templateData = str_replace('$NAMESPACE$', $this->namespace, $templateData);
 
         $templateData = str_replace('$MODEL_NAME$', $this->commandData->modelName, $templateData);

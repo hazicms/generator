@@ -15,6 +15,7 @@ use HaziCms\Generator\Generator\Generators\Field\SchemaBuilderRadioField;
 use HaziCms\Generator\Generator\Generators\Field\SchemaBuilderCheckField;
 use HaziCms\Generator\Generator\Generators\Field\SchemaBuilderNumberField;
 use HaziCms\Generator\Generator\Generators\Field\SchemaBuilderDateField;
+use HaziCms\Generator\Generator\Generators\Field\SchemaBuilderHiddenField;
 
 class ModuleViewGenerator implements GeneratorProvider
 {
@@ -140,6 +141,12 @@ class ModuleViewGenerator implements GeneratorProvider
             case 'select':
                 $select = new SchemaBuilderSelectField($this->commandData);
                 return $select->getHtml($fieldName, $fieldValues, 'null', $fieldTypeParams);
+                break;
+
+             // user_id:hidden,'id'=> 'user_id'
+            case 'hidden':
+                $hidden = new SchemaBuilderHiddenField($this->commandData);
+                return $hidden->getHtml($fieldName, $fieldValues, 'null', $fieldTypeParams);
                 break;
             
             // title:text,'size' => 255
