@@ -63,7 +63,7 @@ Steps to Get Started
     Examples: 
         
         Select: group:select,'id' => 'mySelect', 'class' => 'red':['admin' => 'admin','user' => 'user']:user
-        Select (data from model): role_id:select,'id' => 'mySelect', 'class' => 'red'
+        Select (data from model): role_id:select,'id' => 'mySelect', 'class' => 'red'  //to run well, need the fathers model created. Role for this example
         Text: title:text,'size' => 255
         Hidden: user_id:hidden,'id'=> 'user_id' // if the name ends with '_id', we suppose that the value is the model id. // Else value is null
         Float: price:float,'min' => 1, 'max' => 10
