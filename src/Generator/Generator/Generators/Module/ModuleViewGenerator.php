@@ -84,7 +84,7 @@ class ModuleViewGenerator implements GeneratorProvider
             $fieldType = $this->generateField($field['fieldName'], $field['fieldType'], $field['fieldTypeParams'], $field['fieldValues'], $field['fieldDefault']);
             $label = '';
             if($field['fieldType'] != 'hidden') {
-                $label = "{!! Form::label('$FIELD_NAME$', '$FIELD_NAME_TITLE$:') !!}";
+                $label = "{!! Form::label('".$field['fieldName']."', '".Str::title($field['fieldName']).":') !!}";
             }
             $singleFieldStr = str_replace('$FIELD_NAME_TITLE$', Str::title($field['fieldName']), $fieldTemplate);
             $singleFieldStr = str_replace('$FIELD_NAME$', $field['fieldName'], $singleFieldStr);
