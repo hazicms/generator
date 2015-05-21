@@ -82,9 +82,13 @@ class ModuleViewGenerator implements GeneratorProvider
         foreach($this->commandData->inputFields as $field)
         {
             $fieldType = $this->generateField($field['fieldName'], $field['fieldType'], $field['fieldTypeParams'], $field['fieldValues'], $field['fieldDefault']);
-            
+            $label = '';
+            if($field['fieldType'] != 'hidden') {
+                $label = "{!! Form::label('$FIELD_NAME$', '$FIELD_NAME_TITLE$:') !!}";
+            }
             $singleFieldStr = str_replace('$FIELD_NAME_TITLE$', Str::title($field['fieldName']), $fieldTemplate);
             $singleFieldStr = str_replace('$FIELD_NAME$', $field['fieldName'], $singleFieldStr);
+            $singleFieldStr = str_replace('$FIELD_LABEL$', $label, $singleFieldStr);
             $singleFieldStr = str_replace('$FIELD_TYPE$', $fieldType, $singleFieldStr);
 
             $fieldsStr .= $singleFieldStr . "\n\n";

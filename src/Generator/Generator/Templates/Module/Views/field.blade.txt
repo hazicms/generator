@@ -1,7 +1,7 @@
 <div class="col-md-10">
 		    <div class="box-body">
 				<!-- $FIELD_NAME_TITLE$ Field -->
-				{!! Form::label('$FIELD_NAME$', '$FIELD_NAME_TITLE$:') !!}
+				$FIELD_LABEL$
 		    	$FIELD_TYPE$
 		    </div>
 
