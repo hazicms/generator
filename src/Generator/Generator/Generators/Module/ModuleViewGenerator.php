@@ -257,8 +257,8 @@ class ModuleViewGenerator implements GeneratorProvider
                 } else {
                     $tableBodyFields .= "<td>{!! $" . $this->commandData->modelNameCamel . "->" . $column . " !!}</td>\n\t\t\t\t\t";
                 }
-
             }
+            break;
         }
 
         $tableBodyFields = trim($tableBodyFields);
