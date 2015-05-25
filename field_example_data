@@ -2,6 +2,13 @@ Different examples for fields:
 
 * For a blog system:
 
-	- user_ii field: user_id:select,'id' => 'mySelect', 'class' => 'red':['admin' => 'admin','user' => 'user', 'paco' => 'paco']:user
+	- user_id field: user_id:select,'id' => 'mySelect', 'class' => 'red':['admin' => 'admin','user' => 'user', 'paco' => 'paco']:user
 	- title field: title:text,'size' => 255
     - body field: body:textarea,'placeholder' => 'Body content'
+
+* For roles:
+
+	- name:text,'size' => 255  *
+	- slug:text,'size' => 255  *
+	- description:textarea,'placeholder' => 'Add description'
+	- level:hidden,'id'=> 'level'  *

@@ -255,7 +255,7 @@ class ModuleViewGenerator implements GeneratorProvider
                     $name = explode("_", $field['fieldName']);
                     $tableBodyFields .= "<td>{!! link_to_route('admin.".$name[0]."s.edit', $" . $this->commandData->modelNameCamel . "->" . $name[0] . "->name, ['id' => $".$this->commandData->modelNameCamel . "->".$field['fieldName']."]) !!}</td>\n\t\t\t\t\t";
                 } else {
-                    $tableBodyFields .= "<td>{!! $" . $this->commandData->modelNameCamel . "->" . $column . " !!}</td>\n\t\t\t\t\t";
+                    $tableBodyFields .= "<td>{!! $" . $this->commandData->modelNameCamel . "->" . $field['fieldName'] . " !!}</td>\n\t\t\t\t\t";
                 }
             }
             break;
