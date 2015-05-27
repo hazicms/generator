@@ -3,7 +3,7 @@
 use Config;
 use Mitul\Generator\CommandData;
 use Mitul\Generator\Generators\GeneratorProvider;
-use HaziCms\Generator\Generator\Templates\TemplatesHelper;
+use HaziCms\Generator\Generator\TemplatesHelper;
 
 class ModuleRequestGenerator implements GeneratorProvider
 {

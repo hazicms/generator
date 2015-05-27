@@ -2,7 +2,7 @@
 
 use Config;
 use Mitul\Generator\CommandData;
-use HaziCms\Generator\Generator\Templates\TemplatesHelper;
+use HaziCms\Generator\Generator\TemplatesHelper;
 use Mitul\Generator\Generators\GeneratorProvider;
 
 class ModuleRepoViewControllerGenerator implements GeneratorProvider

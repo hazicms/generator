@@ -6,7 +6,7 @@ use Config;
 use Illuminate\Support\Str;
 use Mitul\Generator\CommandData;
 use Mitul\Generator\Generators\GeneratorProvider;
-use HaziCms\Generator\Generator\Templates\TemplatesHelper;
+use HaziCms\Generator\Generator\TemplatesHelper;
 use HaziCms\Generator\Generator\Generators\Field\SchemaBuilderSelectField;
 use HaziCms\Generator\Generator\Generators\Field\SchemaBuilderFloatField;
 use HaziCms\Generator\Generator\Generators\Field\SchemaBuilderTextField;

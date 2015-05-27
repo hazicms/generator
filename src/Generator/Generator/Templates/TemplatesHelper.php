@@ -1,6 +1,5 @@
 <?php namespace HaziCms\Generator\Generator\Templates;
 
-
 class TemplatesHelper
 {
 	public function getTemplate($template, $type = "Common")

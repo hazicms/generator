@@ -5,7 +5,7 @@ use \Config;
 use Illuminate\Support\Str;
 use Mitul\Generator\Commands\APIGeneratorCommand;
 use Mitul\Generator\File\FileHelper;
-use Mitul\Generator\Templates\TemplatesHelper;
+use Mitul\Generator\TemplatesHelper;
 
 class CommandData
 {
